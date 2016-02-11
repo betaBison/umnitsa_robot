@@ -239,7 +239,7 @@ class JoystickPublisher():
 				self.calibrate()
 
 			if self.commands.MINUS and self.commands.PLUS:
-		self.poweroff()
+				self.poweroff()
 
 
 		# update Hat

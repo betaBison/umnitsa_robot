@@ -83,7 +83,7 @@ class JoystickPublisher():
         self.initialized = False
         self.found = False
         self.axis_timer = time.time()
-        self.timeout = 1.0
+        self.timeout = 0.1
         self.axis_updated = False
 
     def publish(self):
@@ -133,7 +133,7 @@ class JoystickPublisher():
                         # only publish commands if timeout has passed
                         if self.commands.TYPE != "AXIS" or (self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
                             self.command_publisher.publish(self.commands) # publish updated commands
-                            if :
+                            if self.commands.TYPE == "AXIS":
                                 self.axis_timer = time.time()
                                 self.axis_updated = True
 

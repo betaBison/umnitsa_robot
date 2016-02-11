@@ -136,7 +136,7 @@ class JoystickPublisher():
                         # only publish commands if timeout has passed
                         if self.commands.TYPE != "AXIS":
                             self.command_publisher.publish(self.commands) # publish updated commands
-                        elif self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
+                        elif self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout:
                             self.cmd_vel_publisher.publish(self.cmd_vel) # publish updated cmd_vel
                             if self.commands.TYPE == "AXIS":
                                 self.axis_timer = time.time()

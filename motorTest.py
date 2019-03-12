@@ -9,6 +9,7 @@ GPIO.setup(7,GPIO.OUT,initial=False)
 GPIO.setup(8,GPIO.OUT,initial=False)
 GPIO.setup(10,GPIO.OUT,initial=False)
 GPIO.setup(11,GPIO.OUT,initial=False)
+print("About to start!")
 
 """
 # pin testing

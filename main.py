@@ -16,6 +16,7 @@ def main():
         motors.cw(throttle)
         time.sleep(0.1)
     motors.disable()
+    time.sleep(5)
 
     print("starting ccw")
     for ii in range(100):
@@ -23,6 +24,7 @@ def main():
         motors.ccw(throttle)
         time.sleep(0.1)
     motors.disable()
+    time.sleep(5)
 
     print("starting forward")
     for ii in range(100):
@@ -30,6 +32,7 @@ def main():
         motors.forward(throttle)
         time.sleep(0.1)
     motors.disable()
+    time.sleep(5)
 
     print("starting backward")
     for ii in range(100):
@@ -37,6 +40,7 @@ def main():
         motors.backward(throttle)
         time.sleep(0.1)
     motors.disable()
+    time.sleep(5)
 
     print("end of script")
 

@@ -45,14 +45,14 @@ class MotorControl():
         dc = 50.0 + 50.0*x  # calculate duty cycle
 
         # send motors pwm signal
-        self.M1 = GPIO.PWM(self.M1,self.f)
-        self.M1.start(dc)
-        self.M2 = GPIO.PWM(self.M2,self.f)
-        self.M2.start(dc)
-        self.M3 = GPIO.PWM(self.M3,self.f)
-        self.M3.start(dc)
-        self.M4 = GPIO.PWM(self.M4,self.f)
-        self.M4.start(dc)
+        m1 = GPIO.PWM(self.M1,self.f)
+        m1.start(dc)
+        m2 = GPIO.PWM(self.M2,self.f)
+        m2.start(dc)
+        m3 = GPIO.PWM(self.M3,self.f)
+        m3.start(dc)
+        m4 = GPIO.PWM(self.M4,self.f)
+        m4.start(dc)
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
@@ -65,14 +65,14 @@ class MotorControl():
 
         dc = 50.0 - 50.0*x  # calculate duty cycle
         # send motors pwm signal
-        self.M1 = GPIO.PWM(self.M1,self.f)
-        self.M1.start(dc)
-        self.M2 = GPIO.PWM(self.M2,self.f)
-        self.M2.start(dc)
-        self.M3 = GPIO.PWM(self.M3,self.f)
-        self.M3.start(dc)
-        self.M4 = GPIO.PWM(self.M4,self.f)
-        self.M4.start(dc)
+        m1 = GPIO.PWM(self.M1,self.f)
+        m1.start(dc)
+        m2 = GPIO.PWM(self.M2,self.f)
+        m2.start(dc)
+        m3 = GPIO.PWM(self.M3,self.f)
+        m3.start(dc)
+        m4 = GPIO.PWM(self.M4,self.f)
+        m4.start(dc)
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
@@ -88,14 +88,14 @@ class MotorControl():
         dc_ccw = 50.0 - 50.0*x
 
         # send motors pwm signal
-        self.M1 = GPIO.PWM(self.M1,self.f)
-        self.M1.start(dc_cw)
-        self.M2 = GPIO.PWM(self.M2,self.f)
-        self.M2.start(dc_ccw)
-        self.M3 = GPIO.PWM(self.M3,self.f)
-        self.M3.start(dc_ccw)
-        self.M4 = GPIO.PWM(self.M4,self.f)
-        self.M4.start(dc_cw)
+        m1 = GPIO.PWM(self.M1,self.f)
+        m1.start(dc_cw)
+        m2 = GPIO.PWM(self.M2,self.f)
+        m2.start(dc_ccw)
+        m3 = GPIO.PWM(self.M3,self.f)
+        m3.start(dc_ccw)
+        m4 = GPIO.PWM(self.M4,self.f)
+        m4.start(dc_cw)
 
 
     def backward(self,x):
@@ -108,11 +108,11 @@ class MotorControl():
         dc_ccw = 50.0 - 50.0*x
 
         # send motors pwm signal
-        self.M1 = GPIO.PWM(self.M1,self.f)
-        self.M1.start(dc_ccw)
-        self.M2 = GPIO.PWM(self.M2,self.f)
-        self.M2.start(dc_cw)
-        self.M3 = GPIO.PWM(self.M3,self.f)
-        self.M3.start(dc_cw)
-        self.M4 = GPIO.PWM(self.M4,self.f)
-        self.M4.start(dc_ccw)
+        m1 = GPIO.PWM(self.M1,self.f)
+        m1.start(dc_ccw)
+        m2 = GPIO.PWM(self.M2,self.f)
+        m2.start(dc_cw)
+        m3 = GPIO.PWM(self.M3,self.f)
+        m3.start(dc_cw)
+        m4 = GPIO.PWM(self.M4,self.f)
+        m4.start(dc_ccw)

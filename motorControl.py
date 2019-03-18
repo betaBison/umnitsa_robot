@@ -42,7 +42,7 @@ class MotorControl():
         - rightleft = left
         """
         direction = atan2(frontback,rightleft)
-        
+
 
 
         if frontback >= 0.0:
@@ -51,7 +51,7 @@ class MotorControl():
             self.backward(-frontback)
         if rightleft >= 0.0:
             self.right(rightleft)
-        else
+        else:
             self.left(-rightleft)
 
     def cw(self,x):

@@ -20,7 +20,6 @@ def main():
     motors.disable()
     time.sleep(5)
 
-    """
     print("starting ccw")
     for ii in range(100):
         throttle = 1.0
@@ -55,7 +54,6 @@ def main():
         motors.left(throttle)
     motors.disable()
     time.sleep(5)
-    """
 
     print("end of script")
 
@@ -63,8 +61,7 @@ def main():
 
 if __name__ == '__main__':
     try:
-        while True:
-            main()
+        main()
 
     except KeyboardInterrupt:
         motors = MotorControl()

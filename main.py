@@ -14,7 +14,6 @@ def main():
     for ii in range(100):
         throttle = 1.0
         motors.cw(throttle)
-        time.sleep(0.1)
     motors.disable()
     time.sleep(5)
 
@@ -22,7 +21,6 @@ def main():
     for ii in range(100):
         throttle = 1.0
         motors.ccw(throttle)
-        time.sleep(0.1)
     motors.disable()
     time.sleep(5)
 
@@ -30,7 +28,6 @@ def main():
     for ii in range(100):
         throttle = 1.0
         motors.forward(throttle)
-        time.sleep(0.1)
     motors.disable()
     time.sleep(5)
 
@@ -38,7 +35,6 @@ def main():
     for ii in range(100):
         throttle = 1.0
         motors.backward(throttle)
-        time.sleep(0.1)
     motors.disable()
     time.sleep(5)
 
@@ -46,7 +42,6 @@ def main():
     for ii in range(100):
         throttle = 1.0
         motors.right(throttle)
-        time.sleep(0.1)
     motors.disable()
     time.sleep(5)
 
@@ -54,7 +49,6 @@ def main():
     for ii in range(100):
         throttle = 1.0
         motors.left(throttle)
-        time.sleep(0.1)
     motors.disable()
     time.sleep(5)
 

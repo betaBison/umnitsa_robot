@@ -22,7 +22,7 @@ class MotorControl():
         self.M3 = 10                     # DB #2 IN1 & IN2
         self.M4 = 11                     # DB #2 IN3 & IN4
 
-        self.enabled = False
+        self.timer = 0.1                # seconds for each to run
 
         GPIO.setwarnings(False)     # don't show setup warnings
         # set pins as outputs and initialize to False/Low
@@ -32,6 +32,7 @@ class MotorControl():
         GPIO.setup(self.DB2,GPIO.OUT,initial=False)
         GPIO.setup(self.M3,GPIO.OUT,initial=False)
         GPIO.setup(self.M4,GPIO.OUT,initial=False)
+
 
     def lateral(self,frontback,rightleft):
         """
@@ -66,10 +67,10 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        time.sleep(x)
+        time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        time.sleep(1.0-x)
+        time.sleep((1.0-x)*self.timer)
 
     def ccw(self,x):
         """
@@ -83,10 +84,10 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        time.sleep(x)
+        time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        time.sleep(1.0-x)
+        time.sleep((1.0-x)*self.timer)
 
 
     def forward(self,x):
@@ -101,10 +102,10 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        time.sleep(x)
+        time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        time.sleep(1.0-x)
+        time.sleep((1.0-x)*self.timer)
 
 
     def backward(self,x):
@@ -119,10 +120,10 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        time.sleep(x)
+        time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        time.sleep(1.0-x)
+        time.sleep((1.0-x)*self.timer)
 
 
     def right(self,x):
@@ -137,10 +138,10 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        time.sleep(x)
+        time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        time.sleep(1.0-x)
+        time.sleep((1.0-x)*self.timer)
 
 
     def left(self,x):
@@ -155,10 +156,10 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        time.sleep(x)
+        time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        time.sleep(1.0-x)
+        time.sleep((1.0-x)*self.timer)
 
     def disable(self):
         """

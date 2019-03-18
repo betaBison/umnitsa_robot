@@ -5,13 +5,13 @@ GPIO.setmode(GPIO.BOARD)
 TRIG = 16
 ECHO = 18
 
-print "Distance Measurement In Progress"
+print("Distance Measurement In Progress")
 
 GPIO.setup(TRIG,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
 
 GPIO.output(TRIG, False)
-print "Waiting For Sensor To Settle"
+print("Waiting For Sensor To Settle")
 time.sleep(2)
 
 def distance():

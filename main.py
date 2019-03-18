@@ -60,9 +60,6 @@ def main():
 
     print("end of script")
 
-    y =
-    side =
-
 
 
 if __name__ == "__main__":

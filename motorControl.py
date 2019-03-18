@@ -5,6 +5,7 @@ Desc  : motor control functions for umnitsa robot
 """
 import time
 import RPi.GPIO as GPIO
+from math import atan2
 
 class MotorControl():
     def __init__(self):
@@ -21,6 +22,8 @@ class MotorControl():
         self.M3 = 10                     # DB #2 IN1 & IN2
         self.M4 = 11                     # DB #2 IN3 & IN4
 
+        self.enabled = False
+
         GPIO.setwarnings(False)     # don't show setup warnings
         # set pins as outputs and initialize to False/Low
         GPIO.setup(self.DB1,GPIO.OUT,initial=False)
@@ -30,52 +33,60 @@ class MotorControl():
         GPIO.setup(self.M3,GPIO.OUT,initial=False)
         GPIO.setup(self.M4,GPIO.OUT,initial=False)
 
-    def disable(self):
+    def lateral(self,frontback,rightleft):
         """
-        disable both motor driver boards
+        break up commands
+        + frontback = forward
+        - frontback = backward
+        + rightleft = right
+        - rightleft = left
         """
-        GPIO.output(self.DB1,False)   # disable DB #1
-        GPIO.output(self.DB2,False)   # disable DB #2
+        direction = atan2(frontback,rightleft)
+        
+
+
+        if frontback >= 0.0:
+            self.front(frontback)
+        else:
+            self.backward(-frontback)
+        if rightleft >= 0.0:
+            self.right(rightleft)
+        else
+            self.left(-rightleft)
 
     def cw(self,x):
         """
         moves robot clockwise
         input: x = throttle (0.0,1.0)
         """
-        dc = 50.0 + 50.0*x  # calculate duty cycle
-
-        # send motors pwm signal
-        m1 = GPIO.PWM(self.M1,self.f)
-        m1.start(dc)
-        m2 = GPIO.PWM(self.M2,self.f)
-        m2.start(dc)
-        m3 = GPIO.PWM(self.M3,self.f)
-        m3.start(dc)
-        m4 = GPIO.PWM(self.M4,self.f)
-        m4.start(dc)
+        GPIO.output(self.M1,True)
+        GPIO.output(self.M2,True)
+        GPIO.output(self.M3,True)
+        GPIO.output(self.M4,True)
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
+        time.sleep(x)
+        GPIO.output(self.DB1,False)
+        GPIO.output(self.DB2,False)
+        time.sleep(1.0-x)
 
     def ccw(self,x):
         """
         moves robot counter clockwise
         input: x = throttle (0.0,1.0)
         """
-
-        dc = 50.0 - 50.0*x  # calculate duty cycle
-        # send motors pwm signal
-        m1 = GPIO.PWM(self.M1,self.f)
-        m1.start(dc)
-        m2 = GPIO.PWM(self.M2,self.f)
-        m2.start(dc)
-        m3 = GPIO.PWM(self.M3,self.f)
-        m3.start(dc)
-        m4 = GPIO.PWM(self.M4,self.f)
-        m4.start(dc)
+        GPIO.output(self.M1,False)
+        GPIO.output(self.M2,False)
+        GPIO.output(self.M3,False)
+        GPIO.output(self.M4,False)
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
+        time.sleep(x)
+        GPIO.output(self.DB1,False)
+        GPIO.output(self.DB2,False)
+        time.sleep(1.0-x)
 
 
     def forward(self,x):
@@ -83,19 +94,17 @@ class MotorControl():
         moves robot forward
         input: x = throttle (0.0,1.0)
         """
-        # calculate duty cycles
-        dc_cw = 50.0 + 50.0*x
-        dc_ccw = 50.0 - 50.0*x
+        GPIO.output(self.M1,True)
+        GPIO.output(self.M2,False)
+        GPIO.output(self.M3,False)
+        GPIO.output(self.M4,True)
 
-        # send motors pwm signal
-        m1 = GPIO.PWM(self.M1,self.f)
-        m1.start(dc_cw)
-        m2 = GPIO.PWM(self.M2,self.f)
-        m2.start(dc_ccw)
-        m3 = GPIO.PWM(self.M3,self.f)
-        m3.start(dc_ccw)
-        m4 = GPIO.PWM(self.M4,self.f)
-        m4.start(dc_cw)
+        GPIO.output(self.DB1,True)   # enable DB #1
+        GPIO.output(self.DB2,True)   # enable DB #2
+        time.sleep(x)
+        GPIO.output(self.DB1,False)
+        GPIO.output(self.DB2,False)
+        time.sleep(1.0-x)
 
 
     def backward(self,x):
@@ -103,16 +112,57 @@ class MotorControl():
         moves robot backwards
         input: x = throttle (0.0,1.0)
         """
-        # calculate duty cycles
-        dc_cw = 50.0 + 50.0*x
-        dc_ccw = 50.0 - 50.0*x
+        GPIO.output(self.M1,False)
+        GPIO.output(self.M2,True)
+        GPIO.output(self.M3,True)
+        GPIO.output(self.M4,False)
 
-        # send motors pwm signal
-        m1 = GPIO.PWM(self.M1,self.f)
-        m1.start(dc_ccw)
-        m2 = GPIO.PWM(self.M2,self.f)
-        m2.start(dc_cw)
-        m3 = GPIO.PWM(self.M3,self.f)
-        m3.start(dc_cw)
-        m4 = GPIO.PWM(self.M4,self.f)
-        m4.start(dc_ccw)
+        GPIO.output(self.DB1,True)   # enable DB #1
+        GPIO.output(self.DB2,True)   # enable DB #2
+        time.sleep(x)
+        GPIO.output(self.DB1,False)
+        GPIO.output(self.DB2,False)
+        time.sleep(1.0-x)
+
+
+    def right(self,x):
+        """
+        moves robot right
+        input: x = throttle (0.0,1.0)
+        """
+        GPIO.output(self.M1,True)
+        GPIO.output(self.M2,False)
+        GPIO.output(self.M3,True)
+        GPIO.output(self.M4,False)
+
+        GPIO.output(self.DB1,True)   # enable DB #1
+        GPIO.output(self.DB2,True)   # enable DB #2
+        time.sleep(x)
+        GPIO.output(self.DB1,False)
+        GPIO.output(self.DB2,False)
+        time.sleep(1.0-x)
+
+
+    def left(self,x):
+        """
+        moves robot left
+        input: x = throttle (0.0,1.0)
+        """
+        GPIO.output(self.M1,False)
+        GPIO.output(self.M2,True)
+        GPIO.output(self.M3,False)
+        GPIO.output(self.M4,True)
+
+        GPIO.output(self.DB1,True)   # enable DB #1
+        GPIO.output(self.DB2,True)   # enable DB #2
+        time.sleep(x)
+        GPIO.output(self.DB1,False)
+        GPIO.output(self.DB2,False)
+        time.sleep(1.0-x)
+
+    def disable(self):
+        """
+        disable both motor driver boards
+        """
+        GPIO.output(self.DB1,False)   # disable DB #1
+        GPIO.output(self.DB2,False)   # disable DB #2

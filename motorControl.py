@@ -67,11 +67,9 @@ class MotorControl():
 
         GPIO.output(self.DB1,True)   # enable DB #1
         GPIO.output(self.DB2,True)   # enable DB #2
-        print("running")
         time.sleep(x*self.timer)
         GPIO.output(self.DB1,False)
         GPIO.output(self.DB2,False)
-        print("not running")
         time.sleep((1.0-x)*self.timer)
 
     def ccw(self,x):

@@ -14,7 +14,6 @@ def main():
 
     print("starting cw")
     for ii in range(100):
-        print(ii)
         throttle = 1.0
         motors.cw(throttle)
     motors.disable()
@@ -61,7 +60,8 @@ def main():
 
 if __name__ == '__main__':
     try:
-        main()
+        while True:
+            main()
 
     except KeyboardInterrupt:
         motors = MotorControl()

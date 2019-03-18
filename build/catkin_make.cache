@@ -1,0 +1,2 @@
+controller
+-DCATKIN_DEVEL_PREFIX=/home/derek/Documents/umnitsa/devel -DCMAKE_INSTALL_PREFIX=/home/derek/Documents/umnitsa/install -G Unix Makefiles

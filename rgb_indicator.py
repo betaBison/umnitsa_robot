@@ -11,7 +11,7 @@ class RGB():
 
 		self.SDI = 37
 		self.RCLK = 38
-		SELF.SRCLK = 40
+		self.SRCLK = 40
 
 		GPIO.setup(self.SDI, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
@@ -30,28 +30,28 @@ class RGB():
 
 	def hc595_in(dat):
 		for bit in range(0, 8):
-			GPIO.output(SDI, 0x80 & (dat << bit))
-			GPIO.output(SRCLK, GPIO.HIGH)
+			GPIO.output(self.SDI, 0x80 & (dat << bit))
+			GPIO.output(self.SRCLK, GPIO.HIGH)
 			time.sleep(0.001)
-			GPIO.output(SRCLK, GPIO.LOW)
+			GPIO.output(self.SRCLK, GPIO.LOW)
 
 	def hc595_out():
-		GPIO.output(RCLK, GPIO.HIGH)
+		GPIO.output(self.RCLK, GPIO.HIGH)
 		time.sleep(0.001)
-		GPIO.output(RCLK, GPIO.LOW)
+		GPIO.output(self.RCLK, GPIO.LOW)
 
 	def loop():
-		WhichLeds = LED0	# Change Mode, modes from LED0 to LED3
+		WhichLeds = self.LED0	# Change Mode, modes from LED0 to LED3
 		sleeptime = 0.1		# Change speed, lower value, faster speed
 		while True:
 			for i in range(0, len(WhichLeds)):
-				hc595_in(WhichLeds[i])
-				hc595_out()
+				self.hc595_in(WhichLeds[i])
+				self.hc595_out()
 				time.sleep(sleeptime)
 
 			for i in range(len(WhichLeds)-1, -1, -1):
-				hc595_in(WhichLeds[i])
-				hc595_out()
+				self.hc595_in(WhichLeds[i])
+				self.hc595_out()
 				time.sleep(sleeptime)
 
 	def destroy():   # When program ending, the function is executed.

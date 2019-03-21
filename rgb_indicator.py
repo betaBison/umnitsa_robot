@@ -15,7 +15,7 @@ class RGB():
 
         GPIO.setup(self.SDI, GPIO.OUT, initial=GPIO.LOW)
     	GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
-    	GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
+    	GPIO.setup(self.SRCLK, GPIO.OUT, initial=GPIO.LOW)
 
         self.off = np.zeros((24,1))
         self.on = np.ones((24,1))
@@ -57,10 +57,10 @@ class RGB():
     def destroy():   # When program ending, the function is executed.
     	GPIO.cleanup()
 
-if __name__ == '__main__': # Program starting from here
+if __name__ == '__main__':
     test = RGB()
     test.print_msg()
 	try:
-		test.loop()
+        test.loop()
 	except KeyboardInterrupt:
 		test.destroy()

@@ -25,8 +25,8 @@ class RGB():
 		self.LED3 = [0x02,0x03,0x0b,0x0f,0x2f,0x3f,0xbf,0xff]	#blink mode 3
 
 	def print_msg():
-		print 'Program is running...'
-		print 'Please press Ctrl+C to end the program...'
+		print('Program is running...')
+		print('Please press Ctrl+C to end the program...')
 
 	def hc595_in(dat):
 		for bit in range(0, 8):

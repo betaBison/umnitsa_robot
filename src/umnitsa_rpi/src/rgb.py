@@ -50,37 +50,22 @@ class RGB():
 		rospy.loginfo(commands)
 		if commands.X:
 			self.bitlist[0:3] = ['1','1','1']
-			self.hc595_in()
-			self.hc595_out()
 		else:
 			self.bitlist[0:3] = ['0','0','0']
-			self.hc595_in()
-			self.hc595_out()
 		if commands.Y:
 			self.bitlist[3:6] = ['1','1','1']
-			self.hc595_in()
-			self.hc595_out()
 		else:
 			self.bitlist[3:6] = ['0','0','0']
-			self.hc595_in()
-			self.hc595_out()
 		if commands.A:
 			self.bitlist[6:9] = ['1','1','1']
-			self.hc595_in()
-			self.hc595_out()
 		else:
 			self.bitlist[6:9] = ['0','0','0']
-			self.hc595_in()
-			self.hc595_out()
 		if commands.B:
 			self.bitlist[9:12] = ['1','1','1']
-			self.hc595_in()
-			self.hc595_out()
 		else:
 			self.bitlist[9:12] = ['0','0','0']
-			self.hc595_in()
-			self.hc595_out()
-
+		self.hc595_in()
+		self.hc595_out()
 	def subscribe(self):
 		rospy.init_node('rgb', anonymous=True)
 		rospy.Subscriber('commands',joystick, self.updateOutput)

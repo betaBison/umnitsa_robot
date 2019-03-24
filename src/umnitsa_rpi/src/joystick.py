@@ -68,7 +68,7 @@ class JoystickPublisher():
                 for event in events:
                     if event.type == pygame.JOYAXISMOTION:
                         time_now = time.time()
-                        if time_now - self.axistimer > 0.5:
+                        if time_now - self.axistimer > 0.0:
                             self.axistimer = time_now
                             self.commands.LTOGRIGHT = joystick.get_axis(self.LTOGRIGHT)
                             self.commands.LTOGUP = joystick.get_axis(self.LTOGUP)

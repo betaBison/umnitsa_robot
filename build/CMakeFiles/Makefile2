@@ -410,514 +410,594 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory controller
+# Directory level rules for directory umnitsa_rpi
 
 # Convenience name for "all" pass in the directory.
-controller/all:
+umnitsa_rpi/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all
 
-.PHONY : controller/all
+.PHONY : umnitsa_rpi/all
 
 # Convenience name for "clean" pass in the directory.
-controller/clean: controller/CMakeFiles/roscpp_generate_messages_py.dir/clean
-controller/clean: controller/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-controller/clean: controller/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-controller/clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-controller/clean: controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-controller/clean: controller/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-controller/clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-controller/clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-controller/clean: controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-controller/clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-controller/clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-controller/clean: controller/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-controller/clean: controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-controller/clean: controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-controller/clean: controller/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/clean
+umnitsa_rpi/clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/clean
 
-.PHONY : controller/clean
+.PHONY : umnitsa_rpi/clean
 
 # Convenience name for "preinstall" pass in the directory.
-controller/preinstall:
+umnitsa_rpi/preinstall:
 
-.PHONY : controller/preinstall
+.PHONY : umnitsa_rpi/preinstall
 
 #=============================================================================
-# Target rules for target controller/CMakeFiles/roscpp_generate_messages_py.dir
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir
 
 # All Build rule for target.
-controller/CMakeFiles/roscpp_generate_messages_py.dir/all:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_py.dir/build.make controller/CMakeFiles/roscpp_generate_messages_py.dir/depend
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_py.dir/build.make controller/CMakeFiles/roscpp_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_py"
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_py.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target umnitsa_rpi_genpy"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/all
 
 # Build rule for subdir invocation for target.
-controller/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: controller/CMakeFiles/roscpp_generate_messages_py.dir/rule
+umnitsa_rpi_genpy: umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/rule
 
-.PHONY : roscpp_generate_messages_py
-
-# clean rule for target.
-controller/CMakeFiles/roscpp_generate_messages_py.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_py.dir/build.make controller/CMakeFiles/roscpp_generate_messages_py.dir/clean
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_py.dir/clean
+.PHONY : umnitsa_rpi_genpy
 
 # clean rule for target.
-clean: controller/CMakeFiles/roscpp_generate_messages_py.dir/clean
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_genpy.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target controller/CMakeFiles/roscpp_generate_messages_eus.dir
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir
 
 # All Build rule for target.
-controller/CMakeFiles/roscpp_generate_messages_eus.dir/all:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_eus.dir/build.make controller/CMakeFiles/roscpp_generate_messages_eus.dir/depend
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_eus.dir/build.make controller/CMakeFiles/roscpp_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_eus"
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_eus.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target umnitsa_rpi_generate_messages"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all
+
+# Include target in all.
+all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all
+
+.PHONY : all
 
 # Build rule for subdir invocation for target.
-controller/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 7
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_eus: controller/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+umnitsa_rpi_generate_messages: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/rule
 
-.PHONY : roscpp_generate_messages_eus
-
-# clean rule for target.
-controller/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_eus.dir/build.make controller/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+.PHONY : umnitsa_rpi_generate_messages
 
 # clean rule for target.
-clean: controller/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target controller/CMakeFiles/roscpp_generate_messages_lisp.dir
+# Target rules for target umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-controller/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_lisp"
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# clean rule for target.
-controller/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
-
-# All Build rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# clean rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/std_msgs_generate_messages_lisp.dir
-
-# All Build rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# clean rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/roscpp_generate_messages_cpp.dir
-
-# All Build rule for target.
-controller/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_cpp"
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# clean rule for target.
-controller/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
-
-# All Build rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_eus"
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# clean rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
-
-# All Build rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_lisp"
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# clean rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/std_msgs_generate_messages_cpp.dir
-
-# All Build rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# clean rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
-
-# All Build rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_nodejs"
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# clean rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
-
-# All Build rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_py"
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# clean rule for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/std_msgs_generate_messages_eus.dir
-
-# All Build rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-controller/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_eus: controller/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+std_msgs_generate_messages_eus: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 .PHONY : std_msgs_generate_messages_eus
 
 # clean rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: controller/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir
+# Target rules for target umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# clean rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/roscpp_generate_messages_nodejs.dir
-
-# All Build rule for target.
-controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_nodejs"
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
-
-# Build rule for subdir invocation for target.
-controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# clean rule for target.
-controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-
-# clean rule for target.
-clean: controller/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target controller/CMakeFiles/std_msgs_generate_messages_py.dir
-
-# All Build rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_py.dir/build
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_py.dir/all
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+std_msgs_generate_messages_py: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 .PHONY : std_msgs_generate_messages_py
 
 # clean rule for target.
-controller/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: controller/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target umnitsa_rpi_genlisp"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_genlisp: umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/rule
+
+.PHONY : umnitsa_rpi_genlisp
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_genlisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_nodejs: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_msgs_generate_messages_nodejs
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/build.make umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/build.make umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target _umnitsa_rpi_generate_messages_check_deps_joystick"
+.PHONY : umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/rule
+
+# Convenience name for target.
+_umnitsa_rpi_generate_messages_check_deps_joystick: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/rule
+
+.PHONY : _umnitsa_rpi_generate_messages_check_deps_joystick
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/build.make umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/all: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/all: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num=12 "Built target umnitsa_rpi_generate_messages_cpp"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_generate_messages_cpp: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/rule
+
+.PHONY : umnitsa_rpi_generate_messages_cpp
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/all: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/all: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num=16 "Built target umnitsa_rpi_generate_messages_nodejs"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_generate_messages_nodejs: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/rule
+
+.PHONY : umnitsa_rpi_generate_messages_nodejs
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : std_msgs_generate_messages_lisp
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target umnitsa_rpi_gencpp"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_gencpp: umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/rule
+
+.PHONY : umnitsa_rpi_gencpp
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_gencpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/all: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/all: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num=13,14 "Built target umnitsa_rpi_generate_messages_eus"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_generate_messages_eus: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/rule
+
+.PHONY : umnitsa_rpi_generate_messages_eus
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target umnitsa_rpi_gennodejs"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_gennodejs: umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/rule
+
+.PHONY : umnitsa_rpi_gennodejs
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_gennodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/all: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num= "Built target umnitsa_rpi_geneus"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_geneus: umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/rule
+
+.PHONY : umnitsa_rpi_geneus
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_geneus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/all: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/all: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num=15 "Built target umnitsa_rpi_generate_messages_lisp"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_generate_messages_lisp: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/rule
+
+.PHONY : umnitsa_rpi_generate_messages_lisp
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir
+
+# All Build rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/all: umnitsa_rpi/CMakeFiles/std_msgs_generate_messages_py.dir/all
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/all: umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick.dir/all
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/depend
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/derek/Documents/umnitsa/build/CMakeFiles --progress-num=17,18 "Built target umnitsa_rpi_generate_messages_py"
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/derek/Documents/umnitsa/build/CMakeFiles 0
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/rule
+
+# Convenience name for target.
+umnitsa_rpi_generate_messages_py: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/rule
+
+.PHONY : umnitsa_rpi_generate_messages_py
+
+# clean rule for target.
+umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/clean:
+	$(MAKE) -f umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/build.make umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/clean
+.PHONY : umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py.dir/clean
 
 .PHONY : clean
 

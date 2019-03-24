@@ -1,0 +1,8 @@
+prefix=/home/derek/Documents/umnitsa/devel
+
+Name: umnitsa_rpi
+Description: Description of umnitsa_rpi
+Version: 0.0.0
+Cflags: -I/home/derek/Documents/umnitsa/devel/include
+Libs: -L/home/derek/Documents/umnitsa/devel/lib 
+Requires: rospy std_msgs message_runtime

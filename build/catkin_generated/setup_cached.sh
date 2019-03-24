@@ -7,8 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/derek/Documents/umnitsa/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/derek/Documents/umnitsa/devel/lib:$LD_LIBRARY_PATH"
 export PWD="/home/derek/Documents/umnitsa/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/derek/Documents/umnitsa/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/derek/Documents/umnitsa/src:$ROS_PACKAGE_PATH"

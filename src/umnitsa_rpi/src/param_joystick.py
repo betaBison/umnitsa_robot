@@ -1,0 +1,25 @@
+# buttons
+B = 0
+A = 1
+Y = 2
+X = 3
+L = 4
+R = 5
+ZL = 6
+ZR = 7
+MINUS = 8
+PLUS = 9
+LCLICK = 10
+RCLICK = 11
+HOME = 12
+CAPTURE = 13
+
+# HATS
+RIGHT = 0
+UP = 1
+
+# axis
+LTOGRIGHT = 0
+LTOGUP = 1
+RTOGRIGHT = 2
+RTOGUP = 3

@@ -122,7 +122,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/derek/Documents/umnitsa/build/gtest/cmake_install.cmake")
-  include("/home/derek/Documents/umnitsa/build/controller/cmake_install.cmake")
+  include("/home/derek/Documents/umnitsa/build/umnitsa_rpi/cmake_install.cmake")
 
 endif()
 

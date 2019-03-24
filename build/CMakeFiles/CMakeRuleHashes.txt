@@ -1,2 +1,20 @@
 # Hashes of file build rules.
+2608df1f7fe63a4e9d7826399268ef53 /home/derek/Documents/umnitsa/devel/include/umnitsa_rpi/console_controller.h
+c267cabaf39ceca9ae1c8d86697970ce /home/derek/Documents/umnitsa/devel/include/umnitsa_rpi/joystick.h
+4c228bd7809a60800bbdefe8d4a24953 /home/derek/Documents/umnitsa/devel/lib/python2.7/dist-packages/umnitsa_rpi/msg/__init__.py
+b4f7e3600e83a5c5771368cdf20c7eb5 /home/derek/Documents/umnitsa/devel/lib/python2.7/dist-packages/umnitsa_rpi/msg/_console_controller.py
+f2ccd2896e540f8989e8cf260b7d126a /home/derek/Documents/umnitsa/devel/lib/python2.7/dist-packages/umnitsa_rpi/msg/_joystick.py
+e6db06ba1a1b48f5dc5518a2146a3745 /home/derek/Documents/umnitsa/devel/share/common-lisp/ros/umnitsa_rpi/msg/console_controller.lisp
+b123570da1e0d71b6a1560000b6a90aa /home/derek/Documents/umnitsa/devel/share/common-lisp/ros/umnitsa_rpi/msg/joystick.lisp
+1b982a87c4425bd2e4248684b692c614 /home/derek/Documents/umnitsa/devel/share/gennodejs/ros/umnitsa_rpi/msg/console_controller.js
+63f13279b52af7cd416dc27204ae1ad9 /home/derek/Documents/umnitsa/devel/share/gennodejs/ros/umnitsa_rpi/msg/joystick.js
+fa311435f8f84b747dfb530409d82b5d /home/derek/Documents/umnitsa/devel/share/roseus/ros/umnitsa_rpi/manifest.l
+b12c8482b917f79ec842004a627c10cb /home/derek/Documents/umnitsa/devel/share/roseus/ros/umnitsa_rpi/msg/console_controller.l
+188640cb202018674b6e79022ad7da14 /home/derek/Documents/umnitsa/devel/share/roseus/ros/umnitsa_rpi/msg/joystick.l
 f8a2acaa6db1a63970e4155b1f948f55 CMakeFiles/clean_test_results
+3b40742eefab2a238a03dc1e36bc2490 umnitsa_rpi/CMakeFiles/_umnitsa_rpi_generate_messages_check_deps_joystick
+2c27a7a75df5ed3f00916318c7dae190 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_cpp
+2c27a7a75df5ed3f00916318c7dae190 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_eus
+2c27a7a75df5ed3f00916318c7dae190 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_lisp
+2c27a7a75df5ed3f00916318c7dae190 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_nodejs
+2c27a7a75df5ed3f00916318c7dae190 umnitsa_rpi/CMakeFiles/umnitsa_rpi_generate_messages_py

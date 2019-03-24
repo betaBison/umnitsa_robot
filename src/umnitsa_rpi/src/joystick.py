@@ -23,6 +23,7 @@ class JoystickPublisher():
         self.LTOGUP = J.LTOGUP
         self.RTOGRIGHT = J.RTOGRIGHT
         self.RTOGUP = J.RTOGUP
+        self.axistimer = time.time()
         # initilize buttons from parameter file
         self.B = J.B
         self.A = J.A
@@ -66,10 +67,14 @@ class JoystickPublisher():
                 # handle events separately
                 for event in events:
                     if event.type == pygame.JOYAXISMOTION:
-                        self.commands.LTOGRIGHT = joystick.get_axis(self.LTOGRIGHT)
-                        self.commands.LTOGUP = joystick.get_axis(self.LTOGUP)
-                        self.commands.RTOGRIGHT = joystick.get_axis(self.RTOGRIGHT)
-                        self.commands.RTOGUP = joystick.get_axis(self.RTOGUP)
+                        time_now = time.time()
+                        if time_now - self.axistimer > 0.5:
+                            self.axistime == time_now
+                            self.commands.LTOGRIGHT = joystick.get_axis(self.LTOGRIGHT)
+                            self.commands.LTOGUP = joystick.get_axis(self.LTOGUP)
+                            self.commands.RTOGRIGHT = joystick.get_axis(self.RTOGRIGHT)
+                            self.commands.RTOGUP = joystick.get_axis(self.RTOGUP)
+                            self.command_publisher.publish(self.commands) # publish updated commands
                     elif event.type == pygame.JOYBUTTONDOWN:
                         if joystick.get_button(self.B):
                             self.commands.B = True
@@ -79,6 +84,7 @@ class JoystickPublisher():
                             self.commands.Y = True
                         if joystick.get_button(self.X):
                             self.commands.X = True
+                        self.command_publisher.publish(self.commands) # publish updated commands
                     elif event.type == pygame.JOYBUTTONUP:
                         if not joystick.get_button(self.B):
                             self.commands.B = False
@@ -88,7 +94,7 @@ class JoystickPublisher():
                             self.commands.Y = False
                         if not joystick.get_button(self.X):
                             self.commands.X = False
-                    self.command_publisher.publish(self.commands) # publish updated commands
+                        self.command_publisher.publish(self.commands) # publish updated commands
 
 
 if __name__ == '__main__':

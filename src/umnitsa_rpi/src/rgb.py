@@ -36,7 +36,7 @@ class RGB():
 
 	def updateOutput(self,commands):
 		if commands.X:
-			self.hc595_in(0xFFFFF)
+			self.hc595_in(0x01)
 			self.hc595_out()
 		else:
 			self.hc595_in(0x0)
@@ -44,11 +44,11 @@ class RGB():
 
 	def subscribe(self):
 		rospy.init_node('rgb', anonymous=True)
-		rospy.Subscriber('commands',joystick, updateCommand)
+		rospy.Subscriber('commands',joystick, self.updateOutput)
 
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 
 if __name__ == '__main__':
-	subsriber = RGB()
+	subscriber = RGB()
 	subscriber.subscribe()

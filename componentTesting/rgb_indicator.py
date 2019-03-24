@@ -53,6 +53,8 @@ class RGB():
 				time.sleep(sleeptime)
 
 	def destroy(self):   # When program ending, the function is executed.
+		self.hc595_in(0x0)
+		self.hc595_out()
 		GPIO.cleanup()
 
 if __name__ == '__main__':

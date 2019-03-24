@@ -41,19 +41,19 @@ class RGB():
 		else:
 			self.hc595_in(0x0)
 			self.hc595_out()
-        if commands.Y:
+		if commands.Y:
 			self.hc595_in(0x02)
 			self.hc595_out()
 		else:
 			self.hc595_in(0x0)
 			self.hc595_out()
-        if commands.A:
+		if commands.A:
 			self.hc595_in(0x04)
 			self.hc595_out()
 		else:
 			self.hc595_in(0x0)
 			self.hc595_out()
-        if commands.B:
+		if commands.B:
 			self.hc595_in(0x08)
 			self.hc595_out()
 		else:

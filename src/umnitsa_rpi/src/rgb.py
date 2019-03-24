@@ -22,10 +22,11 @@ class RGB():
 		GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(self.SRCLK, GPIO.OUT, initial=GPIO.LOW)
 
-	def hc595_in(self,dat):
-		bitlist = '110110110110110110110110'
-		for bit in bitlist:
-			GPIO.output(self.SDI,bit)
+		self.bitlist = '000000000000000000000000'
+
+	def hc595_in(self):
+		for bit in self.bitlist:
+			GPIO.output(self.SDI,int(bit))
 			GPIO.output(self.SRCLK, GPIO.HIGH)
 			time.sleep(0.001)
 			GPIO.output(self.SRCLK, GPIO.LOW)
@@ -46,28 +47,36 @@ class RGB():
 
 	def updateOutput(self,commands):
 		if commands.X:
-			self.hc595_in(0x01)
+			self.bitlist[0:3] = '111'
+			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.hc595_in(0x0)
+			self.bitlist[0:3] = '000'
+			self.hc595_in()
 			self.hc595_out()
 		if commands.Y:
-			self.hc595_in(0x02)
+			self.bitlist[3:6] = '111'
+			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.hc595_in(0x0)
+			self.bitlist[3:6] = '000'
+			self.hc595_in()
 			self.hc595_out()
 		if commands.A:
-			self.hc595_in(0x04)
+			self.bitlist[6:9] = '111'
+			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.hc595_in(0x0)
+			self.bitlist[6:9] = '000'
+			self.hc595_in()
 			self.hc595_out()
 		if commands.B:
-			self.hc595_in(0x08)
+			self.bitlist[9:12] = '111'
+			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.hc595_in(0x0)
+			self.bitlist[9:12] = '000'
+			self.hc595_in()
 			self.hc595_out()
 
 	def subscribe(self):

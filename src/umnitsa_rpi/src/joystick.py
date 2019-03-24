@@ -69,12 +69,14 @@ class JoystickPublisher():
                     if event.type == pygame.JOYAXISMOTION:
                         time_now = time.time()
                         if time_now - self.axistimer > 0.5:
-                            self.axistime == time_now
+                            self.axistimer = time_now
                             self.commands.LTOGRIGHT = joystick.get_axis(self.LTOGRIGHT)
                             self.commands.LTOGUP = joystick.get_axis(self.LTOGUP)
                             self.commands.RTOGRIGHT = joystick.get_axis(self.RTOGRIGHT)
                             self.commands.RTOGUP = joystick.get_axis(self.RTOGUP)
                             self.command_publisher.publish(self.commands) # publish updated commands
+			else:
+			    print(time_now - self.axistimer)
                     elif event.type == pygame.JOYBUTTONDOWN:
                         if joystick.get_button(self.B):
                             self.commands.B = True

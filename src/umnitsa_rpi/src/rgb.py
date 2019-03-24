@@ -23,11 +23,21 @@ class RGB():
 		GPIO.setup(self.SRCLK, GPIO.OUT, initial=GPIO.LOW)
 
 	def hc595_in(self,dat):
+		bitlist = '110110110110110110110110'
+		for bit in bitlist:
+			GPIO.output(self.SDI,bit)
+			GPIO.output(self.SRCLK, GPIO.HIGH)
+			time.sleep(0.001)
+			GPIO.output(self.SRCLK, GPIO.LOW)
+
+	"""
+	def hc595_in(self,dat):
 		for bit in range(0, 24):
 			GPIO.output(self.SDI, 0x800000 & (dat << bit))
 			GPIO.output(self.SRCLK, GPIO.HIGH)
 			time.sleep(0.001)
 			GPIO.output(self.SRCLK, GPIO.LOW)
+	"""
 
 	def hc595_out(self):
 		GPIO.output(self.RCLK, GPIO.HIGH)

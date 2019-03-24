@@ -22,10 +22,11 @@ class RGB():
 		GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(self.SRCLK, GPIO.OUT, initial=GPIO.LOW)
 
-		self.bitlist = '000000000000000000000000'
+		self.bitlist = ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0']
 
 	def hc595_in(self):
-		for bit in self.bitlist:
+		input = self.bitlist[::-1]
+		for bit in input:
 			GPIO.output(self.SDI,int(bit))
 			GPIO.output(self.SRCLK, GPIO.HIGH)
 			time.sleep(0.001)
@@ -46,36 +47,37 @@ class RGB():
 		GPIO.output(self.RCLK, GPIO.LOW)
 
 	def updateOutput(self,commands):
+		rospy.loginfo(commands)
 		if commands.X:
-			self.bitlist[0:3] = '111'
+			self.bitlist[0:3] = ['1','1','1']
 			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.bitlist[0:3] = '000'
+			self.bitlist[0:3] = ['0','0','0']
 			self.hc595_in()
 			self.hc595_out()
 		if commands.Y:
-			self.bitlist[3:6] = '111'
+			self.bitlist[3:6] = ['1','1','1']
 			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.bitlist[3:6] = '000'
+			self.bitlist[3:6] = ['0','0','0']
 			self.hc595_in()
 			self.hc595_out()
 		if commands.A:
-			self.bitlist[6:9] = '111'
+			self.bitlist[6:9] = ['1','1','1']
 			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.bitlist[6:9] = '000'
+			self.bitlist[6:9] = ['0','0','0']
 			self.hc595_in()
 			self.hc595_out()
 		if commands.B:
-			self.bitlist[9:12] = '111'
+			self.bitlist[9:12] = ['1','1','1']
 			self.hc595_in()
 			self.hc595_out()
 		else:
-			self.bitlist[9:12] = '000'
+			self.bitlist[9:12] = ['0','0','0']
 			self.hc595_in()
 			self.hc595_out()
 

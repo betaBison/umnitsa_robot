@@ -23,12 +23,25 @@ class JoystickPublisher():
         self.LTOGUP = J.LTOGUP
         self.RTOGRIGHT = J.RTOGRIGHT
         self.RTOGUP = J.RTOGUP
-        self.axistimer = time.time()
         # initilize buttons from parameter file
         self.B = J.B
         self.A = J.A
         self.Y = J.Y
         self.X = J.X
+        self.L = J.L
+        self.R = J.R
+        self.ZL = J.ZL
+        self.ZR = J.ZR
+        self.MINUS = J.MINUS
+        self.PLUS = J.PLUS
+        self.LCLICK = J.LCLICK
+        self.RCLICK = J.RCLICK
+        self.HOME = J.HOME
+        self.CAPTURE = J.CAPTURE
+        # initialize hat from parameter file
+        self.UP = J.UP
+        self.RIGHT = J.RIGHT
+
 
         self.command_publisher = rospy.Publisher('commands', joystick, queue_size=10)
         rospy.init_node('talker', anonymous=True)
@@ -67,16 +80,12 @@ class JoystickPublisher():
                 # handle events separately
                 for event in events:
                     if event.type == pygame.JOYAXISMOTION:
-                        time_now = time.time()
-                        if time_now - self.axistimer > 0.0:
-                            self.axistimer = time_now
-                            self.commands.LTOGRIGHT = joystick.get_axis(self.LTOGRIGHT)
-                            self.commands.LTOGUP = joystick.get_axis(self.LTOGUP)
-                            self.commands.RTOGRIGHT = joystick.get_axis(self.RTOGRIGHT)
-                            self.commands.RTOGUP = joystick.get_axis(self.RTOGUP)
-                            self.command_publisher.publish(self.commands) # publish updated commands
-			else:
-			    print(time_now - self.axistimer)
+                        self.commands.LTOGRIGHT = joystick.get_axis(self.LTOGRIGHT)
+                        self.commands.LTOGUP = joystick.get_axis(self.LTOGUP)
+                        self.commands.RTOGRIGHT = joystick.get_axis(self.RTOGRIGHT)
+                        self.commands.RTOGUP = joystick.get_axis(self.RTOGUP)
+                        self.commands.TYPE = "AXIS"
+
                     elif event.type == pygame.JOYBUTTONDOWN:
                         if joystick.get_button(self.B):
                             self.commands.B = True
@@ -86,7 +95,28 @@ class JoystickPublisher():
                             self.commands.Y = True
                         if joystick.get_button(self.X):
                             self.commands.X = True
-                        self.command_publisher.publish(self.commands) # publish updated commands
+                        if joystick.get_button(self.L):
+                            self.commands.L = True
+                        if joystick.get_button(self.R):
+                            self.commands.R = True
+                        if joystick.get_button(self.ZL):
+                            self.commands.ZL = True
+                        if joystick.get_button(self.ZR):
+                            self.commands.ZR = True
+                        if joystick.get_button(self.MINUS):
+                            self.commands.MINUS = True
+                        if joystick.get_button(self.PLUS):
+                            self.commands.PLUS = True
+                        if joystick.get_button(self.LCLICK):
+                            self.commands.LCLICK = True
+                        if joystick.get_button(self.RCLICK):
+                            self.commands.RCLICK = True
+                        if joystick.get_button(self.HOME):
+                            self.commands.HOME = True
+                        if joystick.get_button(self.CAPTURE):
+                            self.commands.CAPTURE = True
+                        self.commands.TYPE = "BUTTON"
+
                     elif event.type == pygame.JOYBUTTONUP:
                         if not joystick.get_button(self.B):
                             self.commands.B = False
@@ -96,7 +126,34 @@ class JoystickPublisher():
                             self.commands.Y = False
                         if not joystick.get_button(self.X):
                             self.commands.X = False
-                        self.command_publisher.publish(self.commands) # publish updated commands
+                        if joystick.get_button(self.L):
+                            self.commands.L = False
+                        if joystick.get_button(self.R):
+                            self.commands.R = False
+                        if joystick.get_button(self.ZL):
+                            self.commands.ZL = False
+                        if joystick.get_button(self.ZR):
+                            self.commands.ZR = False
+                        if joystick.get_button(self.MINUS):
+                            self.commands.MINUS = False
+                        if joystick.get_button(self.PLUS):
+                            self.commands.PLUS = False
+                        if joystick.get_button(self.LCLICK):
+                            self.commands.LCLICK = False
+                        if joystick.get_button(self.RCLICK):
+                            self.commands.RCLICK = False
+                        if joystick.get_button(self.HOME):
+                            self.commands.HOME = False
+                        if joystick.get_button(self.CAPTURE):
+                            self.commands.CAPTURE = False
+                        self.commands.TYPE = "BUTTON"
+
+                    elif event.type == pygame.JOYHATMOTION:
+                        self.commands.UP = joystick.get_hat(0)[1]
+                        self.commands.RIGHT = joystick.get_hat(0)[0]
+                        self.commands.TYPE = "HAT"
+
+                    self.command_publisher.publish(self.commands) # publish updated commands
 
 
 if __name__ == '__main__':

@@ -90,7 +90,7 @@ class MotorControl():
         time.sleep((1.0-x)*self.timer)
 
 
-    def forward(self,x):
+    def backward(self,x):
         """
         moves robot forward
         input: x = throttle (0.0,1.0)
@@ -108,7 +108,7 @@ class MotorControl():
         time.sleep((1.0-x)*self.timer)
 
 
-    def backward(self,x):
+    def forward(self,x):
         """
         moves robot backwards
         input: x = throttle (0.0,1.0)

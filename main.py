@@ -14,42 +14,42 @@ def main():
 
     print("starting cw")
     for ii in range(100):
-        throttle = 1.0
+        throttle = (0.01*ii)*0.5+0.5
         motors.cw(throttle)
     motors.disable()
     time.sleep(5)
 
     print("starting ccw")
     for ii in range(100):
-        throttle = 1.0
+        throttle = (0.01*ii)*0.5+0.5
         motors.ccw(throttle)
     motors.disable()
     time.sleep(5)
 
     print("starting forward")
     for ii in range(100):
-        throttle = 1.0
+        throttle = (0.01*ii)*0.5 + 0.5
         motors.forward(throttle)
     motors.disable()
     time.sleep(5)
 
     print("starting backward")
     for ii in range(100):
-        throttle = 1.0
+        throttle = (0.01*ii)*0.5 + 0.5
         motors.backward(throttle)
     motors.disable()
     time.sleep(5)
 
     print("starting right")
     for ii in range(100):
-        throttle = 1.0
+        throttle = 0.01*ii
         motors.right(throttle)
     motors.disable()
     time.sleep(5)
 
     print("starting left")
     for ii in range(100):
-        throttle = 1.0
+        throttle = 0.01*ii
         motors.left(throttle)
     motors.disable()
     time.sleep(5)

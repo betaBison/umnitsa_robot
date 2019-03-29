@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
 
-TRIG = 16
-ECHO = 18
+TRIG = 24
+ECHO = 26
 
 print("Distance Measurement In Progress")
 
@@ -12,7 +12,7 @@ GPIO.setup(ECHO,GPIO.IN)
 
 GPIO.output(TRIG, False)
 print("Waiting For Sensor To Settle")
-time.sleep(2)
+time.sleep(5)
 
 def distance():
     # set Trigger to HIGH
@@ -46,7 +46,7 @@ if __name__ == '__main__':
         while True:
             dist = distance()
             print ("Measured Distance = %.2f cm" % dist)
-            time.sleep(1)
+            time.sleep(0)
 
         # Reset by pressing CTRL + C
     except KeyboardInterrupt:

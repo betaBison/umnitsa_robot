@@ -44,7 +44,7 @@ class RGB():
 		GPIO.output(self.RCLK, GPIO.LOW)
 
 	def loop(self):
-		WhichLeds = self.on	# Change Mode, modes from LED0 to LED3
+		WhichLeds = self.LED0	# Change Mode, modes from LED0 to LED3
 		sleeptime = 0.1		# Change speed, lower value, faster speed
 		while True:
 			for i in range(0, len(WhichLeds)):

@@ -16,7 +16,9 @@ CAPTURE = 13
 
 # HATS
 RIGHT = 0
+LEFT = 0
 UP = 1
+DOWN = 1
 
 # axis
 LTOGRIGHT = 0

@@ -8,14 +8,15 @@ import RPi.GPIO as GPIO
 import time
 import rospy
 from umnitsa_rpi.msg import joystick
+import param_RPiPins as P
 
 class RGB():
 	def __init__(self):
 
 		GPIO.setmode(GPIO.BOARD)
-		self.SDI = 37
-		self.RCLK = 38
-		self.SRCLK = 40
+		self.SDI = P.RGB_SDI
+		self.RCLK = P.RGB_RCLK
+		self.SRCLK = P.RGB_SRCLK
 
 		GPIO.setwarnings(False)	#don't show setup warnings
 		GPIO.setup(self.SDI, GPIO.OUT, initial=GPIO.LOW)

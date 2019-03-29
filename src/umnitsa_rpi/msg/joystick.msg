@@ -13,7 +13,9 @@ bool RCLICK
 bool HOME
 bool CAPTURE
 bool UP
+bool DOWN
 bool RIGHT
+bool LEFT
 float32 LTOGRIGHT
 float32 LTOGUP
 float32 RTOGRIGHT

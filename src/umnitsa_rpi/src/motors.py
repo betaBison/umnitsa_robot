@@ -50,14 +50,14 @@ class Motors():
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 
-	def updateOutput(self):
+	def updateOutput(self,commands):
 		if commands.ZR:
 			print("starting cw")
 			for ii in range(100):
 			    throttle = (0.01*ii)
-			    control.cw(throttle)
-			    time.sleep(0.1)
-			control.disable()
+			    self.cw(throttle)
+			    time.sleep(1.)
+			self.disable()
 
 	def lateral(self,frontback,rightleft):
 		"""
@@ -86,9 +86,9 @@ class Motors():
 		input: x = throttle (0.0,1.0)
 		"""
 		self.PWM_M1.ChangeDutyCycle(x*100.0)
-		self.PWM_M1.ChangeDutyCycle(x*100.0)
-		self.PWM_M1.ChangeDutyCycle(x*100.0)
-		self.PWM_M1.ChangeDutyCycle(x*100.0)
+		self.PWM_M2.ChangeDutyCycle(x*100.0)
+		self.PWM_M3.ChangeDutyCycle(x*100.0)
+		self.PWM_M4.ChangeDutyCycle(x*100.0)
 		"""
 		GPIO.output(self.M1,True)
 		GPIO.output(self.M2,True)

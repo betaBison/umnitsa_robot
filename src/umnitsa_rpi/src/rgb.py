@@ -7,7 +7,7 @@ Desc  : ROS node that outputs to the RGB LEDs
 import RPi.GPIO as GPIO
 import time
 import rospy
-from umnitsa_rpi.msg import joystick
+from umnitsa_rpi.msg import joystick, ultrasonic
 import param_RPiPins as P
 
 class RGB():
@@ -34,21 +34,12 @@ class RGB():
 			time.sleep(0.001)
 			GPIO.output(self.SRCLK, GPIO.LOW)
 
-	"""
-	def hc595_in(self,dat):
-		for bit in range(0, 24):
-			GPIO.output(self.SDI, 0x800000 & (dat << bit))
-			GPIO.output(self.SRCLK, GPIO.HIGH)
-			time.sleep(0.001)
-			GPIO.output(self.SRCLK, GPIO.LOW)
-	"""
-
 	def hc595_out(self):
 		GPIO.output(self.RCLK, GPIO.HIGH)
 		time.sleep(0.001)
 		GPIO.output(self.RCLK, GPIO.LOW)
 
-	def updateOutput(self,commands):
+	def updateCommands(self,commands):
 		# only update output if it's a button or hat press (not axis)
 		if commands.TYPE == "BUTTON" or commands.TYPE == "HAT":
 			rospy.loginfo(commands)
@@ -64,6 +55,7 @@ class RGB():
 				self.bitlist[2] = '1'
 			else:
 				self.bitlist[2] = '0'
+            """
 			if commands.X:
 				self.bitlist[3] = '1'
 			else:
@@ -124,16 +116,39 @@ class RGB():
 				self.bitlist[17] = '1'
 			else:
 				self.bitlist[17] = '0'
+            """
 			self.hc595_in()
 			self.hc595_out()
 
+    def updateUltrasonic(self,ultrasonic):
+        if ultrasonic.ULTRA1 < 0.2:
+            self.bitlist[3] = '1'
+        else:
+            self.bitlist[3] = '0'
+        if ultrasonic.ULTRA2 < 0.2:
+            self.bitlist[6] = '1'
+        else:
+            self.bitlist[6] = '0'
+        if ultrasonic.ULTRA3 < 0.2:
+            self.bitlist[9] = '1'
+        else:
+            self.bitlist[9] = '0'
+        if ultrasonic.ULTRA4 < 0.2:
+            self.bitlist[12] = '1'
+        else:
+            self.bitlist[12] = '0'
+
 	def subscribe(self):
 		rospy.init_node('rgb', anonymous=True)
-		rospy.Subscriber('commands',joystick, self.updateOutput)
+		rospy.Subscriber('commands',joystick, self.updateCommands)
+        rospy.Subscriber('ultrasonic',ultrasonic,self.updateUltrasonic)
 
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 
 if __name__ == '__main__':
-	subscriber = RGB()
-	subscriber.subscribe()
+	try:
+        subscriber = RGB()
+	    subscriber.subscribe()
+    except rospy.ROSInterruptException:
+        GPIO.cleanup()

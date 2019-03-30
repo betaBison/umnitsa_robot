@@ -47,14 +47,18 @@ class UltrasonicPublisher():
 					   self.ULTRA4_ECHO]
 
 		# setup publisher
+		print("step 1 done")
 		self.ultrasonic_publisher = rospy.Publisher('ultrasonic_distance',ultrasonic, queue_size=10)
+		print("step 2 done")
 		rospy.init_node('ultrasonic_sensors',anonymous=True)
+		print("step 3 done")
 		self.ultrasonic_distance = ultrasonic()
+		print("step 4 done")
 		self.rate = rospy.Rate(5) # 10 Hz output rate
-
+		print("step 5 done")
 		# wait for sensor to settle
 		time.sleep(5)
-
+		print("step 6 done")
 
 	def publish(self):
 		while not rospy.is_shutdown():
@@ -64,8 +68,8 @@ class UltrasonicPublisher():
 			self.rate.sleep()
 
 	def updateMeasurements(self):
+		print("step 8 done")
 		for ii in range(len(self.triggers)):
-
 			# send 0.01ms pulse
 			GPIO.output(self.triggers[ii],True)
 			time.sleep(0.00001)
@@ -83,11 +87,14 @@ class UltrasonicPublisher():
 			distance = (elapsed * self.speedofsound) / 2.   # distance = time * velocit
 
 			self.ultrasonic_distance[ii] = distance # update distance
+			print("step 9 done",ii)
+		print("step 10 done")
 
 
 if __name__ == '__main__':
 	try:
 		publisher = UltrasonicPublisher()
+		print("step 7 done")
 		publisher.publish()
 	except rospy.ROSInterruptException:
 		GPIO.cleanup()

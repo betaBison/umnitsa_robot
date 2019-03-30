@@ -8,6 +8,7 @@ import time
 import rospy
 from umnitsa_rpi.msg import joystick
 import param_RPiPins as P
+from math import atan2, cos, pi
 
 class Motors():
 	def __init__(self):
@@ -51,15 +52,27 @@ class Motors():
 		rospy.spin()
 
 	def updateOutput(self,commands):
-		if commands.ZR:
-			print("starting cw")
-			for ii in range(100):
-			    throttle = (0.01*ii)
-			    self.cw(throttle)
-			    time.sleep(1.)
-			self.disable()
+		if commands.TYPE == "BUTTON":
+			if commands.ZR:
+				print("starting cw")
+				for ii in range(100):
+					throttle = (0.01*ii)
+					self.cw(throttle)
+					time.sleep(0.1)
+				self.disable()
+			if commands.ZL:
+				print("starting ccw")
+				for ii in range(100):
+					throttle = (0.01*ii)
+					self.cww(throttle)
+					time.sleep(0.1)
+				self.disable()
 
-	def lateral(self,frontback,rightleft):
+		if commands.TYPE == "AXIS":
+			self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
+
+
+	def lateral(self,RTOGRIGHT,RTOGUP):
 		"""
 		break up commands
 		+ frontback = forward
@@ -67,34 +80,28 @@ class Motors():
 		+ rightleft = right
 		- rightleft = left
 		"""
-		direction = atan2(frontback,rightleft)
+		direction = atan2(RTOGUP,RTOGRIGHT)
 
+		x_M1 = cos(direction+pi/4.)
+		x_M2 = -cos(direction+pi/4.)
+		x_M3 = -cos(direction-pi/4.)
+		x_M4 = cos(direction-pi/4.)
 
-
-		if frontback >= 0.0:
-			self.front(frontback)
-		else:
-			self.backward(-frontback)
-		if rightleft >= 0.0:
-			self.right(rightleft)
-		else:
-			self.left(-rightleft)
+		self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
+		self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
+		self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
+		self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
 
 	def cw(self,x):
 		"""
 		moves robot clockwise
 		input: x = throttle (0.0,1.0)
 		"""
-		self.PWM_M1.ChangeDutyCycle(x*100.0)
-		self.PWM_M2.ChangeDutyCycle(x*100.0)
-		self.PWM_M3.ChangeDutyCycle(x*100.0)
-		self.PWM_M4.ChangeDutyCycle(x*100.0)
-		"""
-		GPIO.output(self.M1,True)
-		GPIO.output(self.M2,True)
-		GPIO.output(self.M3,True)
-		GPIO.output(self.M4,True)
-		"""
+		self.PWM_M1.ChangeDutyCycle(50.0 + x*50.0)
+		self.PWM_M2.ChangeDutyCycle(50.0 + x*50.0)
+		self.PWM_M3.ChangeDutyCycle(50.0 + x*50.0)
+		self.PWM_M4.ChangeDutyCycle(50.0 + x*50.0)
+
 		GPIO.output(self.DB1,True)   # enable DB #1
 		GPIO.output(self.DB2,True)   # enable DB #2
 
@@ -103,10 +110,11 @@ class Motors():
 		moves robot counter clockwise
 		input: x = throttle (0.0,1.0)
 		"""
-		GPIO.output(self.M1,False)
-		GPIO.output(self.M2,False)
-		GPIO.output(self.M3,False)
-		GPIO.output(self.M4,False)
+		self.PWM_M1.ChangeDutyCycle(50.0 - x*50.0)
+		self.PWM_M2.ChangeDutyCycle(50.0 - x*50.0)
+		self.PWM_M3.ChangeDutyCycle(50.0 - x*50.0)
+		self.PWM_M4.ChangeDutyCycle(50.0 - x*50.0)
+
 		GPIO.output(self.DB1,True)   # enable DB #1
 		GPIO.output(self.DB2,True)   # enable DB #2
 

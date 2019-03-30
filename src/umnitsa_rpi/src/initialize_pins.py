@@ -30,3 +30,5 @@ GPIO.setup(P.ULTRA4_ECHO,GPIO.OUT,initial=False)
 GPIO.setup(P.RGB_SDI,GPIO.OUT,initial=False)
 GPIO.setup(P.RGB_RCLK,GPIO.OUT,initial=False)
 GPIO.setup(P.RGB_SRCLK,GPIO.OUT,initial=False)
+
+print("initialized")

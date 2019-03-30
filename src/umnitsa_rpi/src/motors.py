@@ -46,9 +46,18 @@ class Motors():
 
 	def subscribe(self):
 		rospy.init_node('motors', anonymous=True)
-		rospy.Subscriber('commands',joystick, self.updateCommands)
+		rospy.Subscriber('commands',joystick, self.updateOutput)
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
+
+	def updateOutput(self):
+		if commands.ZR:
+			print("starting cw")
+			for ii in range(100):
+			    throttle = (0.01*ii)
+			    control.cw(throttle)
+			    time.sleep(0.1)
+			control.disable()
 
 	def lateral(self,frontback,rightleft):
 		"""

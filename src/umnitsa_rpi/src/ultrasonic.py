@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-## Simple talker demo that published std_msgs/Strings messages
-## to the 'chatter' topic
+"""
+Author: D. Knowles
+Desc  : ROS node that publishes ultrasonic data
+"""
 
 import time
 import rospy

@@ -112,7 +112,7 @@ class RGB():
 				self.bitlist[14] = '1'
 			else:
 				self.bitlist[14] = '0'
-			if commands.UP == -1:
+			if commands.DOWN == 1:
 				self.bitlist[15] = '1'
 			else:
 				self.bitlist[15] = '0'
@@ -120,10 +120,10 @@ class RGB():
 				self.bitlist[16] = '1'
 			else:
 				self.bitlist[16] = '0'
-			if commands.RIGHT == -1:
-				self.bitlist[17:] = '1'
+			if commands.LEFT == 1:
+				self.bitlist[17] = '1'
 			else:
-				self.bitlist[17:] = '0'
+				self.bitlist[17] = '0'
 			self.hc595_in()
 			self.hc595_out()
 

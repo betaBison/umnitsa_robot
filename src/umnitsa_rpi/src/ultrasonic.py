@@ -9,6 +9,7 @@ import time
 import rospy
 from umnitsa_rpi.msg import ultrasonic
 import param_RPiPins as P
+import RPi.GPIO as GPIO
 
 class UltrasonicPublisher():
 	def __init__(self):
@@ -47,7 +48,7 @@ class UltrasonicPublisher():
 
 		# setup publisher
 		self.ultrasonic_publisher = rospy.Publisher('ultrasonic_distance',ultrasonic, queue_size=10)
-		rospy._init_node('ultrasonic sensors',anonymous=True)
+		rospy.init_node('ultrasonic_sensors',anonymous=True)
 		self.ultrasonic_distance = ultrasonic()
 		self.rate = rospy.Rate(5) # 10 Hz output rate
 

@@ -116,9 +116,9 @@ class JoystickPublisher():
 
     def updateAxis(self):
         self.commands.LTOGRIGHT = self.joystick.get_axis(self.LTOGRIGHT)
-        self.commands.LTOGUP = self.joystick.get_axis(self.LTOGUP)
+        self.commands.LTOGUP = -self.joystick.get_axis(self.LTOGUP)
         self.commands.RTOGRIGHT = self.joystick.get_axis(self.RTOGRIGHT)
-        self.commands.RTOGUP = self.joystick.get_axis(self.RTOGUP)
+        self.commands.RTOGUP = -self.joystick.get_axis(self.RTOGUP)
 
     def checkButtons(self):
         new_status = np.zeros((self.num_buttons,1))

@@ -64,33 +64,35 @@ class Motors():
 				print("starting ccw")
 				for ii in range(100):
 					throttle = (0.01*ii)
-					self.cww(throttle)
+					self.ccw(throttle)
 					time.sleep(0.1)
 				self.disable()
 
-		if commands.TYPE == "AXIS":
+		elif commands.TYPE == "AXIS":
+			print("axis")
 			self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
 
 
 	def lateral(self,RTOGRIGHT,RTOGUP):
 		"""
-		break up commands
-		+ frontback = forward
-		- frontback = backward
-		+ rightleft = right
-		- rightleft = left
+		move robot laterally with the right toggle
 		"""
-		direction = atan2(RTOGUP,RTOGRIGHT)
-
-		x_M1 = cos(direction+pi/4.)
-		x_M2 = -cos(direction+pi/4.)
+		direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
+		
+		# compute each motor throttle to move in toggle direction
+		x_M1 = -cos(direction+pi/4.)
+		x_M2 = cos(direction+pi/4.)
 		x_M3 = -cos(direction-pi/4.)
 		x_M4 = cos(direction-pi/4.)
-
+		
+		# set each motor pwm signal
 		self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
 		self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
 		self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
 		self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
+		
+		GPIO.output(self.DB1,True)   # enable DB #1
+                GPIO.output(self.DB2,True)   # enable DB #2		
 
 	def cw(self,x):
 		"""
@@ -191,4 +193,3 @@ if __name__ == '__main__':
 		subscriber.PWM_M2.stop()
 		subscriber.PWM_M3.stop()
 		subscriber.PWM_M4.stop()
-		GPIO.cleanup()

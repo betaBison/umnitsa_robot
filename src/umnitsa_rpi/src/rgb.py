@@ -55,7 +55,7 @@ class RGB():
 				self.bitlist[2] = '1'
 			else:
 				self.bitlist[2] = '0'
-            """
+			"""
 			if commands.X:
 				self.bitlist[3] = '1'
 			else:
@@ -116,39 +116,39 @@ class RGB():
 				self.bitlist[17] = '1'
 			else:
 				self.bitlist[17] = '0'
-            """
+			"""
 			self.hc595_in()
 			self.hc595_out()
 
-    def updateUltrasonic(self,ultrasonic):
-        if ultrasonic.ULTRA1 < 0.2:
-            self.bitlist[3] = '1'
-        else:
-            self.bitlist[3] = '0'
-        if ultrasonic.ULTRA2 < 0.2:
-            self.bitlist[6] = '1'
-        else:
-            self.bitlist[6] = '0'
-        if ultrasonic.ULTRA3 < 0.2:
-            self.bitlist[9] = '1'
-        else:
-            self.bitlist[9] = '0'
-        if ultrasonic.ULTRA4 < 0.2:
-            self.bitlist[12] = '1'
-        else:
-            self.bitlist[12] = '0'
+	def updateUltrasonic(self,ultrasonic):
+		if ultrasonic.ULTRA1 < 0.2:
+			self.bitlist[3] = '1'
+		else:
+			self.bitlist[3] = '0'
+		if ultrasonic.ULTRA2 < 0.2:
+			self.bitlist[6] = '1'
+		else:
+			self.bitlist[6] = '0'
+		if ultrasonic.ULTRA3 < 0.2:
+			self.bitlist[9] = '1'
+		else:
+			self.bitlist[9] = '0'
+		if ultrasonic.ULTRA4 < 0.2:
+			self.bitlist[12] = '1'
+		else:
+			self.bitlist[12] = '0'
 
 	def subscribe(self):
 		rospy.init_node('rgb', anonymous=True)
 		rospy.Subscriber('commands',joystick, self.updateCommands)
-        rospy.Subscriber('ultrasonic',ultrasonic,self.updateUltrasonic)
+		rospy.Subscriber('ultrasonic',ultrasonic,self.updateUltrasonic)
 
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 
 if __name__ == '__main__':
 	try:
-        subscriber = RGB()
-	    subscriber.subscribe()
-    except rospy.ROSInterruptException:
-        GPIO.cleanup()
+		subscriber = RGB()
+		subscriber.subscribe()
+	except rospy.ROSInterruptException:
+		GPIO.cleanup()

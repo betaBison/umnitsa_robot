@@ -4,7 +4,6 @@ Author: D. Knowles
 Desc  : ROS node that publishes the joystick information
 """
 
-
 import time
 import sys
 import os
@@ -13,9 +12,6 @@ import rospy
 from umnitsa_rpi.msg import joystick
 import param_joystick as J
 import numpy as np
-
-
-
 
 class JoystickPublisher():
     def __init__(self):
@@ -134,6 +130,13 @@ class JoystickPublisher():
         self.button_status = new_status
         return index_change
 
+    def checkHats(self):
+        new_status = np.array(self.joystick.get_hat(0))
+        XOR = np.clip(abs(self.hat_status - new_status),0,1)
+        index_change = np.where(XOR)[0]
+        self.hat_status = new_status
+        return index_change
+
     def updateButtonsandHats(self):
         # update buttons
         index_change = self.checkButtons()
@@ -188,14 +191,6 @@ class JoystickPublisher():
                     self.commands.UP = False
                     self.commands.DOWN = False
             self.commands.TYPE = "BUTTON"
-
-    def checkHats(self):
-        new_status = np.array(self.joystick.get_hat(0))
-        XOR = np.clip(abs(self.hat_status - new_status),0,1)
-        index_change = np.where(XOR)[0]
-        self.hat_status = new_status
-        return index_change
-
 
 if __name__ == '__main__':
     try:

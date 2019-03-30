@@ -19,16 +19,13 @@ GPIO.setup(P.M3,GPIO.OUT,initial=False)
 GPIO.setup(P.M4,GPIO.OUT,initial=False)
 # ultrasonic pins
 GPIO.setup(P.ULTRA1_TRIG,GPIO.OUT,initial=False)
-GPIO.setup(P.ULTRA1_ECHO,GPIO.OUT,initial=False)
 GPIO.setup(P.ULTRA2_TRIG,GPIO.OUT,initial=False)
-GPIO.setup(P.ULTRA2_ECHO,GPIO.OUT,initial=False)
 GPIO.setup(P.ULTRA3_TRIG,GPIO.OUT,initial=False)
-GPIO.setup(P.ULTRA3_ECHO,GPIO.OUT,initial=False)
 GPIO.setup(P.ULTRA4_TRIG,GPIO.OUT,initial=False)
-GPIO.setup(P.ULTRA4_ECHO,GPIO.OUT,initial=False)
 #rgb pins
 GPIO.setup(P.RGB_SDI,GPIO.OUT,initial=False)
 GPIO.setup(P.RGB_RCLK,GPIO.OUT,initial=False)
 GPIO.setup(P.RGB_SRCLK,GPIO.OUT,initial=False)
 
+GPIO.cleanup()
 print("initialized")

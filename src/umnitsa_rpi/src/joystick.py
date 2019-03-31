@@ -20,6 +20,16 @@ class JoystickPublisher():
         self.LTOGUP = J.LTOGUP
         self.RTOGRIGHT = J.RTOGRIGHT
         self.RTOGUP = J.RTOGUP
+        self.calibration = [1.0,    # LTOG Right
+                            1.0,    # LTOG Left
+                            1.0,    # LTOG Up
+                            1.0,    # LTOG Down
+                            1.0,    # RTOG Right
+                            1.0,    # RTOG Left
+                            1.0,    # RTOG Up
+                            1.0]    # RTOG Down
+
+
         # initilize buttons and hat from parameter file
         # initilize buttons from parameter file
         self.B = J.B
@@ -112,13 +122,33 @@ class JoystickPublisher():
                     elif event.type == pygame.JOYHATMOTION:
                         self.updateButtonsandHats()
                     rospy.loginfo(self.commands)
+                    print(self.calibration)
                     self.command_publisher.publish(self.commands) # publish updated commands
 
     def updateAxis(self):
-        self.commands.LTOGRIGHT = self.joystick.get_axis(self.LTOGRIGHT)
-        self.commands.LTOGUP = -self.joystick.get_axis(self.LTOGUP)
-        self.commands.RTOGRIGHT = self.joystick.get_axis(self.RTOGRIGHT)
-        self.commands.RTOGUP = -self.joystick.get_axis(self.RTOGUP)
+        LTOGRIGHT = self.joystick.get_axis(self.LTOGRIGHT)
+        if LTOGRIGHT > 0:
+            self.commands.LTOGRIGHT = self.saturate(self.calibration[0]*LTOGRIGHT)
+        else:
+            self.commands.LTOGRIGHT = self.saturate(self.calibration[1]*LTOGRIGHT)
+
+        LTOGUP = self.joystick.get_axis(self.LTOGUP)
+        if LTOGUP > 0:
+            self.commands.LTOGUP = self.saturate(-self.calibration[2]*LTOGUP)
+        else:
+            self.commands.LTOGUP = self.saturate(-self.calibration[3]*LTOGUP)
+
+        RTOGRIGHT = self.joystick.get_axis(self.RTOGRIGHT)
+        if RTOGRIGHT > 0:
+            self.commands.RTOGRIGHT = self.saturate(self.calibration[4]*RTOGRIGHT)
+        else:
+            self.commands.RTOGRIGHT = self.saturate(self.calibration[5]*RTOGRIGHT)
+
+        RTOGUP = self.joystick.get_axis(self.RTOGUP)
+        if RTOGUP > 0:
+            self.commands.RTOGUP = self.saturate(-self.calibration[6]*RTOGUP)
+        else:
+            self.commands.RTOGUP = self.saturate(-self.calibration[7]*RTOGUP)
 
     def checkButtons(self):
         new_status = np.zeros((self.num_buttons,1))
@@ -171,6 +201,10 @@ class JoystickPublisher():
                 self.commands.CAPTURE = bool(self.joystick.get_button(self.CAPTURE))
             self.commands.TYPE = "BUTTON"
 
+            # check for calibrate button
+            if self.HOME:
+                self.calibrate()
+
         # update Hat
         index_change = self.checkHats()
         if len(index_change) > 0:
@@ -191,6 +225,46 @@ class JoystickPublisher():
                     self.commands.UP = False
                     self.commands.DOWN = False
             self.commands.TYPE = "BUTTON"
+
+    def calibrate(self):
+        """
+        calibrate the joystick to reach 1.0 on all edges
+        """
+        LTOGRIGHT = []
+        LTOGUP = []
+        RTOGRIGHT = []
+        RTOGUP = []
+        start = time.time()
+        calibration_time = 5.0
+        while time.time() - start < calibration_time:
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.JOYAXISMOTION:
+                    LTOGRIGHT.append(self.joystick.get_axis(self.LTOGRIGHT))
+                    LTOGUP.append(-self.joystick.get_axis(self.LTOGUP))
+                    RTOGRIGHT.append(self.joystick.get_axis(self.RTOGRIGHT))
+                    RTOGUP.append(-self.joystick.get_axis(self.RTOGUP))
+
+        # calibration sets highest value equal to 1.0
+        self.calibration[0] = 1.0/max(LTOGRIGHT)
+        self.calibration[1] = -1.0/min(LTOGRIGHT)
+        self.calibration[2] = -1.0/min(LTOGUP)
+        self.calibration[3] = 1.0/max(LTOGUP)
+        self.calibration[4] = 1.0/max(RTOGRIGHT)
+        self.calibration[5] = -1.0/min(RTOGRIGHT)
+        self.calibration[6] = -1.0/min(RTOGUP)
+        self.calibration[7] = 1.0/max(RTOGUP)
+
+    def saturate(input):
+        if input < -1.0:
+            output = -1.0
+        elif input > 1.0:
+            output = 1.0
+        else:
+            output = input
+        return output
+
+
 
 if __name__ == '__main__':
     try:

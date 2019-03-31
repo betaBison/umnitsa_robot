@@ -69,7 +69,47 @@ class Motors():
 				self.disable()
 
 		elif commands.TYPE == "AXIS":
-			self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
+			if commands.RTOGRIGHT > 0.0 or commands.RTOGUP > 0.0 or commands.LTOGRIGHT > 0.0:
+				lateral = self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
+				rotation = self.rotation(commands.LTOGRIGHT)
+				motor_output = lateral + rotation
+				if np.amax(motor_output) > 1.0:
+					motor_output /= np.amax(motor_output)
+				x_M1 = motor_output.item(0)
+				x_M2 = motor_output.item(1)
+				x_M3 = motor_output.item(2)
+				x_M4 = motor_output.item(3)
+
+				self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
+				self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
+				self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
+				self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
+
+				GPIO.output(self.DB1,True)   # enable DB #1
+				GPIO.output(self.DB2,True)   # enable DB #2
+
+			else:
+				# disable output if right and left toggle are 0.0
+				GPIO.output(self.DB1,False)
+				GPIO.output(self.DB2,False)
+
+
+	def rotation(self,LTOGRIGHT):
+		"""
+		rotate robot with the left toggle
+		"""
+		x = LTOGRIGHT
+
+		"""
+		self.PWM_M1.ChangeDutyCycle(50.0 + x*50.0)
+		self.PWM_M2.ChangeDutyCycle(50.0 + x*50.0)
+		self.PWM_M3.ChangeDutyCycle(50.0 + x*50.0)
+		self.PWM_M4.ChangeDutyCycle(50.0 + x*50.0)
+
+		GPIO.output(self.DB1,True)   # enable DB #1
+		GPIO.output(self.DB2,True)   # enable DB #2
+		"""
+		return np.array([x,x,x,x])
 
 
 	def lateral(self,RTOGRIGHT,RTOGUP):
@@ -79,25 +119,26 @@ class Motors():
 		if abs(RTOGRIGHT) > 0.0 or abs(RTOGUP) > 0.0:
 
 			direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
-		
+
 			# compute each motor throttle to move in toggle direction
 			x_M1 = cos(direction+pi/4.)
 			x_M2 = -cos(direction+pi/4.)
 			x_M3 = cos(direction-pi/4.)
 			x_M4 = -cos(direction-pi/4.)
-		
+
+			"""
 			# set each motor pwm signal
 			self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
 			self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
 			self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
 			self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
-			
+
 			GPIO.output(self.DB1,True)   # enable DB #1
-                	GPIO.output(self.DB2,True)   # enable DB #2		
-	
+			GPIO.output(self.DB2,True)   # enable DB #2
+			"""
+			return np.array([x_M1,x_M2,x_M3,x_M4])
 		else:
-			GPIO.output(self.DB1,False)
-			GPIO.output(self.DB2,False)
+			return np.array([0.0, 0.0, 0.0, 0.0])
 
 	def cw(self,x):
 		"""

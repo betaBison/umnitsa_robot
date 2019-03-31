@@ -9,6 +9,7 @@ import rospy
 from umnitsa_rpi.msg import joystick
 import param_RPiPins as P
 from math import atan2, cos, pi
+import numpy as np
 
 class Motors():
 	def __init__(self):
@@ -69,12 +70,14 @@ class Motors():
 				self.disable()
 
 		elif commands.TYPE == "AXIS":
-			if commands.RTOGRIGHT > 0.0 or commands.RTOGUP > 0.0 or commands.LTOGRIGHT > 0.0:
+			# check if any toggle is not 0.0 (i.e. False)
+			if commands.RTOGRIGHT or commands.RTOGUP or commands.LTOGRIGHT:
 				lateral = self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
 				rotation = self.rotation(commands.LTOGRIGHT)
 				motor_output = lateral + rotation
-				if np.amax(motor_output) > 1.0:
-					motor_output /= np.amax(motor_output)
+				if np.amax(abs(motor_output)) > 1.0:
+					motor_output /= np.amax(abs(motor_output))
+				print(lateral,rotation)
 				x_M1 = motor_output.item(0)
 				x_M2 = motor_output.item(1)
 				x_M3 = motor_output.item(2)

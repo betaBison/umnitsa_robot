@@ -202,7 +202,7 @@ class JoystickPublisher():
             self.commands.TYPE = "BUTTON"
 
             # check for calibrate button
-            if self.HOME:
+            if self.commands.HOME:
                 self.calibrate()
 
         # update Hat
@@ -255,7 +255,7 @@ class JoystickPublisher():
         self.calibration[6] = -1.0/min(RTOGUP)
         self.calibration[7] = 1.0/max(RTOGUP)
 
-    def saturate(input):
+    def saturate(self,input):
         if input < -1.0:
             output = -1.0
         elif input > 1.0:

@@ -55,10 +55,10 @@ class RGB():
 				self.bitlist[2] = '1'
 			else:
 				self.bitlist[2] = '0'
-            if commands.HOME:
-                self.bitlist[21:24] = ['1','0','1']
-            else:
-                self.bitlist[21:24] = ['1','0','1']
+			if commands.HOME:
+				self.bitlist[21:24] = ['1','0','1']
+			else:
+				self.bitlist[21:24] = ['1','0','1']
 			"""
 			if commands.X:
 				self.bitlist[3] = '1'

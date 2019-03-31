@@ -69,7 +69,6 @@ class Motors():
 				self.disable()
 
 		elif commands.TYPE == "AXIS":
-			print("axis")
 			self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
 
 
@@ -77,22 +76,28 @@ class Motors():
 		"""
 		move robot laterally with the right toggle
 		"""
-		direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
+		if abs(RTOGRIGHT) > 0.0 or abs(RTOGUP) > 0.0:
+
+			direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
 		
-		# compute each motor throttle to move in toggle direction
-		x_M1 = -cos(direction+pi/4.)
-		x_M2 = cos(direction+pi/4.)
-		x_M3 = -cos(direction-pi/4.)
-		x_M4 = cos(direction-pi/4.)
+			# compute each motor throttle to move in toggle direction
+			x_M1 = cos(direction+pi/4.)
+			x_M2 = -cos(direction+pi/4.)
+			x_M3 = cos(direction-pi/4.)
+			x_M4 = -cos(direction-pi/4.)
 		
-		# set each motor pwm signal
-		self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
-		self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
-		self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
-		self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
-		
-		GPIO.output(self.DB1,True)   # enable DB #1
-                GPIO.output(self.DB2,True)   # enable DB #2		
+			# set each motor pwm signal
+			self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
+			self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
+			self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
+			self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
+			
+			GPIO.output(self.DB1,True)   # enable DB #1
+                	GPIO.output(self.DB2,True)   # enable DB #2		
+	
+		else:
+			GPIO.output(self.DB1,False)
+			GPIO.output(self.DB2,False)
 
 	def cw(self,x):
 		"""
@@ -188,8 +193,8 @@ if __name__ == '__main__':
 		subscriber = Motors()
 		subscriber.subscribe()
 	except rospy.ROSInterruptException:
-		subscriber.disable()
 		subscriber.PWM_M1.stop()
 		subscriber.PWM_M2.stop()
 		subscriber.PWM_M3.stop()
 		subscriber.PWM_M4.stop()
+		subscriber.disable()

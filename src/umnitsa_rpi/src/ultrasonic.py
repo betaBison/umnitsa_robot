@@ -51,18 +51,12 @@ class UltrasonicPublisher():
 					   self.ULTRA4_ECHO]
 
 		# setup publisher
-		print("step 1 done")
 		self.ultrasonic_publisher = rospy.Publisher('ultrasonic_distance',ultrasonic, queue_size=10)
-		print("step 2 done")
 		rospy.init_node('ultrasonic_sensors',anonymous=True)
-		print("step 3 done")
 		self.ultrasonic_distance = ultrasonic()
-		print("step 4 done")
 		self.rate = rospy.Rate(5) # 10 Hz output rate
-		print("step 5 done")
 		# wait for sensor to settle
 		time.sleep(5)
-		print("step 6 done")
 
 	def publish(self):
 		while not rospy.is_shutdown():
@@ -71,36 +65,37 @@ class UltrasonicPublisher():
 			self.ultrasonic_publisher.publish(self.ultrasonic_distance) # publish updated distances
 			self.rate.sleep()
 
+	def measure(self,trigger,echo):
+		# send 0.01ms pulse
+		GPIO.output(trigger,True)
+		time.sleep(0.00001)
+		GPIO.output(trigger,False)
+
+		# initialize both times
+		start = time.time()
+		stop = time.time()
+
+		while GPIO.input(echo) == 0:
+			start = time.time()
+			if start - stop > self.maxTime:
+				return self.maxDistance
+
+		while GPIO.input(echo) == 1:
+			stop = time.time()
+			if stop - start > self.maxTime:
+				return self.maxDistance
+
+		elapsed = stop - start  # elapsed time
+		distance = (elapsed * self.speedofsound) / 2.   # distance = time * velocit
+		print(distance," on sensor ",ii)
+		distance = self.clip(distance)
+		return distance
+
 	def updateMeasurements(self):
 		print("step 8 done")
 		for ii in range(len(self.triggers)):
-			# send 0.01ms pulse
-			GPIO.output(self.triggers[ii],True)
-			time.sleep(0.00001)
-			GPIO.output(self.triggers[ii],False)
-
-			# initialize both times
-			start = time.time()
-			stop = time.time()
-
-			while GPIO.input(self.echoes[ii]) == 0:
-				start = time.time()
-				if start - stop > self.maxTime:
-					print("break1",ii)
-					break
-
-			while GPIO.input(self.echoes[ii]) == 1:
-				stop = time.time()
-				if stop - start > self.maxTime:
-					print("break2",ii)
-					break
-
-			elapsed = stop - start  # elapsed time
-			distance = (elapsed * self.speedofsound) / 2.   # distance = time * velocit
-			print(distance," on sensor ",ii)
-			distance = self.clip(distance)
-
-			self.distanceTemp[ii] = distance # update distance
+			# update distance
+			self.distanceTemp[ii] = self.measure(self.triggers[ii],self.echoes[ii])
 
 		# package distances up for publishing
 		self.ultrasonic_distance.ULTRA1 = self.distanceTemp[0]

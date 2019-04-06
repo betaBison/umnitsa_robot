@@ -14,6 +14,9 @@ import RPi.GPIO as GPIO
 class UltrasonicPublisher():
 	def __init__(self):
 		self.speedofsound = 343.0   # [m/s]
+		self.minDistance = 0.0      # [m]
+		self.maxDistance = 5.0      # [m]
+		self.maxTime = (self.maxDistance*2.0)/self.speedofsound
 
 		# pull the right pin numbers from the parameter file
 		self.ULTRA1_TRIG = P.ULTRA1_TRIG
@@ -75,20 +78,37 @@ class UltrasonicPublisher():
 			time.sleep(0.00001)
 			GPIO.output(self.triggers[ii],False)
 
+			# initialize both times
 			start = time.time()
+			stop = time.time()
+
 			while GPIO.input(self.echoes[ii]) == 0:
 				start = time.time()
+				if start - stop > self.maxTime:
+					break
 
-			stop = time.time()
 			while GPIO.input(self.echoes[ii]) == 1:
 				stop = time.time()
+				if stop - start > self.maxTime:
+					break
 
 			elapsed = stop - start  # elapsed time
 			distance = (elapsed * self.speedofsound) / 2.   # distance = time * velocit
+			distance = self.clip(distance)
 
 			self.ultrasonic_distance[ii] = distance # update distance
 			print("step 9 done",ii)
-		print("step 10 done")
+		print("step 10 done)
+
+	def clip(self,input):
+		if input < self.minDistance:
+			output = self.minDistance
+		elif input > self.maxDistance:
+			output = self.maxDistance
+		else:
+			output = input
+		return output
+
 
 
 if __name__ == '__main__':

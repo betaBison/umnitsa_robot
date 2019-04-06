@@ -86,24 +86,27 @@ class UltrasonicPublisher():
 			while GPIO.input(self.echoes[ii]) == 0:
 				start = time.time()
 				if start - stop > self.maxTime:
+					print("break1",ii)
 					break
 
 			while GPIO.input(self.echoes[ii]) == 1:
 				stop = time.time()
 				if stop - start > self.maxTime:
+					print("break2",ii)
 					break
 
 			elapsed = stop - start  # elapsed time
 			distance = (elapsed * self.speedofsound) / 2.   # distance = time * velocit
+			print(distance," on sensor ",ii)
 			distance = self.clip(distance)
 
 			self.distanceTemp[ii] = distance # update distance
-			print("step 9 done",ii)
+
+		# package distances up for publishing
 		self.ultrasonic_distance.ULTRA1 = self.distanceTemp[0]
 		self.ultrasonic_distance.ULTRA2 = self.distanceTemp[1]
 		self.ultrasonic_distance.ULTRA3 = self.distanceTemp[2]
 		self.ultrasonic_distance.ULTRA4 = self.distanceTemp[3]
-		print("step 10 done")
 
 	def clip(self,input):
 		if input < self.minDistance:

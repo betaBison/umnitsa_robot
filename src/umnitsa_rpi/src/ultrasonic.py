@@ -17,6 +17,7 @@ class UltrasonicPublisher():
 		self.minDistance = 0.0      # [m]
 		self.maxDistance = 5.0      # [m]
 		self.maxTime = (self.maxDistance*2.0)/self.speedofsound
+		self.distanceTemp = [self.maxDistance,self.maxDistance,self.maxDistance,self.maxDistance]
 
 		# pull the right pin numbers from the parameter file
 		self.ULTRA1_TRIG = P.ULTRA1_TRIG
@@ -96,9 +97,13 @@ class UltrasonicPublisher():
 			distance = (elapsed * self.speedofsound) / 2.   # distance = time * velocit
 			distance = self.clip(distance)
 
-			self.ultrasonic_distance[ii] = distance # update distance
+			self.distanceTemp[ii] = distance # update distance
 			print("step 9 done",ii)
-		print("step 10 done)
+		self.ultrasonic_distance.ULTRA1 = self.distanceTemp[0]
+		self.ultrasonic_distance.ULTRA2 = self.distanceTemp[1]
+		self.ultrasonic_distance.ULTRA3 = self.distanceTemp[2]
+		self.ultrasonic_distance.ULTRA4 = self.distanceTemp[3]
+		print("step 10 done")
 
 	def clip(self,input):
 		if input < self.minDistance:

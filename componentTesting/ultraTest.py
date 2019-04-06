@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setmode(GPIO.BOARD)
 
-TRIG = 24
-ECHO = 26
+TRIG = 18
+ECHO = 19
 
 print("Distance Measurement In Progress")
 
@@ -12,7 +12,7 @@ GPIO.setup(ECHO,GPIO.IN)
 
 GPIO.output(TRIG, False)
 print("Waiting For Sensor To Settle")
-time.sleep(5)
+time.sleep(1)
 
 def distance():
     # set Trigger to HIGH
@@ -26,18 +26,24 @@ def distance():
     StopTime = time.time()
 
     # save StartTime
+    print("step1")
     while GPIO.input(ECHO) == 0:
         StartTime = time.time()
+	if StartTime - StopTime > 0.029:
+            return 5.0
 
+    print("step2")
     # save time of arrival
     while GPIO.input(ECHO) == 1:
         StopTime = time.time()
-
+	if StopTime - StartTime > 0.029:
+             return 5.0
+    print("step3")
     # time difference between start and arrival
     TimeElapsed = StopTime - StartTime
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
-    distance = (TimeElapsed * 34300) / 2
+    distance = (TimeElapsed * 343.00) / 2
 
     return distance
 
@@ -45,7 +51,7 @@ if __name__ == '__main__':
     try:
         while True:
             dist = distance()
-            print ("Measured Distance = %.2f cm" % dist)
+            print ("Measured Distance = %.2f m" % dist)
             time.sleep(0)
 
         # Reset by pressing CTRL + C

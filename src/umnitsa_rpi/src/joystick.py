@@ -206,7 +206,8 @@ class JoystickPublisher():
             if self.commands.HOME:
                 self.calibrate()
 
-            if self.MINUS and self.PLUS:
+            if self.commands.MINUS and self.commands.PLUS:
+		self.poweroff()
 
 
         # update Hat
@@ -269,7 +270,7 @@ class JoystickPublisher():
         return output
 
     def poweroff(self):
-        call("sudo shutdown -h now", shell=True)
+        call("shutdown now", shell=True)
 
 
 

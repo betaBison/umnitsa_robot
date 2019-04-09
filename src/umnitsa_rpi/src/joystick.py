@@ -12,6 +12,7 @@ import rospy
 from umnitsa_rpi.msg import joystick
 import param_joystick as J
 import numpy as np
+from subprocess import call
 
 class JoystickPublisher():
     def __init__(self):
@@ -205,6 +206,9 @@ class JoystickPublisher():
             if self.commands.HOME:
                 self.calibrate()
 
+            if self.MINUS and self.PLUS:
+
+
         # update Hat
         index_change = self.checkHats()
         if len(index_change) > 0:
@@ -263,6 +267,9 @@ class JoystickPublisher():
         else:
             output = input
         return output
+
+    def poweroff(self):
+        call("sudo shutdown -h now", shell=True)
 
 
 

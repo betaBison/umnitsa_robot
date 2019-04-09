@@ -45,6 +45,8 @@ class Motors():
 		self.PWM_M4 = GPIO.PWM(self.M4,self.frequency)
 		self.PWM_M4.start(0.0)
 
+		self.turbo = False		# turbo mode
+
 
 	def subscribe(self):
 		rospy.init_node('motors', anonymous=True)
@@ -54,20 +56,8 @@ class Motors():
 
 	def updateOutput(self,commands):
 		if commands.TYPE == "BUTTON":
-			if commands.ZR:
-				print("starting cw")
-				for ii in range(100):
-					throttle = (0.01*ii)
-					self.cw(throttle)
-					time.sleep(0.1)
-				self.disable()
-			if commands.ZL:
-				print("starting ccw")
-				for ii in range(100):
-					throttle = (0.01*ii)
-					self.ccw(throttle)
-					time.sleep(0.1)
-				self.disable()
+			if commands.X:
+				self.turbo = True
 
 		elif commands.TYPE == "AXIS":
 			# check if any toggle is not 0.0 (i.e. False)
@@ -76,6 +66,8 @@ class Motors():
 				rotation = self.rotation(commands.LTOGRIGHT)
 				motor_output = lateral + rotation
 				if np.amax(abs(motor_output)) > 1.0:
+					motor_output /= np.amax(abs(motor_output))
+				elif self.turbo:
 					motor_output /= np.amax(abs(motor_output))
 				print(lateral,rotation)
 				x_M1 = motor_output.item(0)

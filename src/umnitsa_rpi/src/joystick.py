@@ -82,6 +82,8 @@ class JoystickPublisher():
         pygame.init()
         self.initialized = False
         self.found = False
+        self.axis_timer = time.time()
+        self.timeout = 0.1
 
     def publish(self):
         while not rospy.is_shutdown():
@@ -108,11 +110,13 @@ class JoystickPublisher():
             else:
                 events = pygame.event.get()
                 # handle events separately
+                print("events=",events)
                 for event in events:
                     if event.type == pygame.JOYAXISMOTION:
                         self.updateAxis()
                         self.commands.TYPE = "AXIS"
-                        self.updateButtonsandHats
+                        self.updateButtonsandHats()
+
 
                     elif event.type == pygame.JOYBUTTONDOWN:
                         self.updateButtonsandHats()
@@ -122,9 +126,14 @@ class JoystickPublisher():
 
                     elif event.type == pygame.JOYHATMOTION:
                         self.updateButtonsandHats()
+
                     rospy.loginfo(self.commands)
-                    print(self.calibration)
-                    self.command_publisher.publish(self.commands) # publish updated commands
+
+                    # only publish commands if timeout has passed
+                    if self.commands.TYPE != "AXIS" or (self.command.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
+                        self.axis_timer = time.time()
+                        self.command_publisher.publish(self.commands) # publish updated commands
+
 
     def updateAxis(self):
         LTOGRIGHT = self.joystick.get_axis(self.LTOGRIGHT)

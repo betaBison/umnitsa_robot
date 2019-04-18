@@ -137,11 +137,11 @@ class JoystickPublisher():
                 # runs if there aren't any events
                 else:
                     # check if any axis is nonzero
-                    if any([self.commands.LTOGRIGHT,self.commands.LTOGUP,self.commands.RTOGRIGHT,self.commands.RTOGUP]):
-                        if (time.time() - self.axis_timer) > self.timeout:
-                            self.updateAxis()
-                            self.commands.TYPE = "AXIS"
-                            self.command_publisher.publish(self.commands) # publish updated commands
+                    if (time.time() - self.axis_timer) > self.timeout:
+                        self.axis_time = time.time()
+                        self.updateAxis()
+                        self.commands.TYPE = "AXIS"
+                        self.command_publisher.publish(self.commands) # publish updated commands
 
 
 

@@ -83,7 +83,8 @@ class JoystickPublisher():
         self.initialized = False
         self.found = False
         self.axis_timer = time.time()
-        self.timeout = 0.1
+        self.timeout = 1.0
+        self.axis_updated = False
 
     def publish(self):
         while not rospy.is_shutdown():
@@ -131,17 +132,19 @@ class JoystickPublisher():
 
                         # only publish commands if timeout has passed
                         if self.commands.TYPE != "AXIS" or (self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
-                            self.axis_timer = time.time()
                             self.command_publisher.publish(self.commands) # publish updated commands
+                            if :
+                                self.axis_timer = time.time()
+                                self.axis_updated = True
 
                 # runs if there aren't any events
                 else:
                     # check if any axis is nonzero
-                    if (time.time() - self.axis_timer) > self.timeout:
-                        self.axis_time = time.time()
+                    if (time.time() - self.axis_timer) > self.timeout and self.axis_updated:
                         self.updateAxis()
                         self.commands.TYPE = "AXIS"
                         self.command_publisher.publish(self.commands) # publish updated commands
+                        self.axis_updated = False
 
 
 

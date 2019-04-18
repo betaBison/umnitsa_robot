@@ -57,7 +57,7 @@ class Motors():
 	def updateOutput(self,commands):
 		if commands.TYPE == "BUTTON":
 			if commands.X:
-				self.turbo = True
+				self.turbo = not(self.turbo)
 
 		elif commands.TYPE == "AXIS":
 			# check if any toggle is not 0.0 (i.e. False)

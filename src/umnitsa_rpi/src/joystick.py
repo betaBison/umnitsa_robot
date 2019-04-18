@@ -110,29 +110,39 @@ class JoystickPublisher():
             else:
                 events = pygame.event.get()
                 # handle events separately
-                print("events=",events)
-                for event in events:
-                    if event.type == pygame.JOYAXISMOTION:
-                        self.updateAxis()
-                        self.commands.TYPE = "AXIS"
-                        self.updateButtonsandHats()
+                if len(events) > 0:
+                    for event in events:
+                        if event.type == pygame.JOYAXISMOTION:
+                            self.updateAxis()
+                            self.commands.TYPE = "AXIS"
+                            self.updateButtonsandHats()
 
 
-                    elif event.type == pygame.JOYBUTTONDOWN:
-                        self.updateButtonsandHats()
+                        elif event.type == pygame.JOYBUTTONDOWN:
+                            self.updateButtonsandHats()
 
-                    elif event.type == pygame.JOYBUTTONUP:
-                        self.updateButtonsandHats()
+                        elif event.type == pygame.JOYBUTTONUP:
+                            self.updateButtonsandHats()
 
-                    elif event.type == pygame.JOYHATMOTION:
-                        self.updateButtonsandHats()
+                        elif event.type == pygame.JOYHATMOTION:
+                            self.updateButtonsandHats()
 
-                    rospy.loginfo(self.commands)
+                        rospy.loginfo(self.commands)
 
-                    # only publish commands if timeout has passed
-                    if self.commands.TYPE != "AXIS" or (self.command.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
-                        self.axis_timer = time.time()
-                        self.command_publisher.publish(self.commands) # publish updated commands
+                        # only publish commands if timeout has passed
+                        if self.commands.TYPE != "AXIS" or (self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
+                            self.axis_timer = time.time()
+                            self.command_publisher.publish(self.commands) # publish updated commands
+
+                # runs if there aren't any events
+                else:
+                    # check if any axis is nonzero
+                    if any([self.commands.LTOGRIGHT,self.commands.LTOGUP,self.commands.RTOGRIGHT,self.commands.RTOGUP]):
+                        if (time.time() - self.axis_timer) > self.timeout:
+                            self.updateAxis()
+                            self.commands.TYPE = "AXIS"
+                            self.command_publisher.publish(self.commands) # publish updated commands
+
 
 
     def updateAxis(self):

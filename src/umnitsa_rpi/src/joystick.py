@@ -162,7 +162,10 @@ class JoystickPublisher():
         return index_change
 
     def checkHats(self):
-        new_status = np.array(self.joystick.get_hat(0))
+        try:
+            new_status = np.array(self.joystick.get_hat(0))
+        except pygame.error:
+            return None
         XOR = np.clip(abs(self.hat_status - new_status),0,1)
         index_change = np.where(XOR)[0]
         self.hat_status = new_status

@@ -23,6 +23,7 @@ SRCLK = 40
 #	like : 0101 0101, means LED1, 3, 5, 7 are on.(from left to right)
 #	and convert to 0x55.
 
+blink = [0xFFFFFF,0x0,0xFFFFFF,0x0]
 LED0 = [0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80]	#original mode
 LED1 = [0x01,0x03,0x07,0x0f,0x1f,0x3f,0x7f,0xff]	#blink mode 1
 LED2 = [0x01,0x05,0x15,0x55,0xb5,0xf5,0xfb,0xff]	#blink mode 2
@@ -30,8 +31,8 @@ LED3 = [0x02,0x03,0x0b,0x0f,0x2f,0x3f,0xbf,0xff]	#blink mode 3
 #=================================================
 
 def print_msg():
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print('Program is running...')
+	print('Please press Ctrl+C to end the program...')
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)    # Number GPIOs by its physical location
@@ -43,8 +44,8 @@ def setup():
 	GPIO.output(SRCLK, GPIO.LOW)
 
 def hc595_in(dat):
-	for bit in range(0, 8):
-		GPIO.output(SDI, 0x80 & (dat << bit))
+	for bit in range(0, 24):
+		GPIO.output(SDI, 0x800000 & (dat << bit))
 		GPIO.output(SRCLK, GPIO.HIGH)
 		time.sleep(0.001)
 		GPIO.output(SRCLK, GPIO.LOW)
@@ -55,7 +56,7 @@ def hc595_out():
 	GPIO.output(RCLK, GPIO.LOW)
 
 def loop():
-	WhichLeds = LED0	# Change Mode, modes from LED0 to LED3
+	WhichLeds = blink	# Change Mode, modes from LED0 to LED3
 	sleeptime = 0.1		# Change speed, lower value, faster speed
 	while True:
 		for i in range(0, len(WhichLeds)):

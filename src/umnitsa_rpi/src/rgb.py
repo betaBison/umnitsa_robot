@@ -23,32 +23,32 @@ class RGB():
 		GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(self.SRCLK, GPIO.OUT, initial=GPIO.LOW)
 
-        # colors
-        self.off = ['0','0','0']
-        self.red = ['1','0','0']
-        self.green = ['0','1','0']
-        self.blue = ['0','0','1']
-        self.yellow = ['1','1','0']
-        self.purple = ['1','0','1']
-        self.cyan = ['0','1','1']
-        self.white = ['1','1','1']
+		# colors
+		self.off = ['0','0','0']
+		self.red = ['1','0','0']
+		self.green = ['0','1','0']
+		self.blue = ['0','0','1']
+		self.yellow = ['1','1','0']
+		self.purple = ['1','0','1']
+		self.cyan = ['0','1','1']
+		self.white = ['1','1','1']
 
-        # initialize LED values
-        self.LED1 = self.off
-        self.LED2 = self.off
-        self.LED3 = self.off
-        self.LED4 = self.off
-        self.LED5 = self.off
-        self.LED6 = self.off
-        self.LED7 = self.off
-        self.LED8 = self.off
+		# initialize LED values
+		self.LED1 = self.off
+		self.LED2 = self.off
+		self.LED3 = self.off
+		self.LED4 = self.off
+		self.LED5 = self.off
+		self.LED6 = self.off
+		self.LED7 = self.off
+		self.LED8 = self.off
 
-        self.clearance = P.clearance
+		self.clearance = P.clearance
 
 
 
 	def hc595_in(self):
-        bitlist = self.LED1 + self.LED2 + self.LED3 + self.LED4 + self.LED5 + self.LED6 + self.LED7 + self.LED8
+		bitlist = self.LED1 + self.LED2 + self.LED3 + self.LED4 + self.LED5 + self.LED6 + self.LED7 + self.LED8
 		input = bitlist[::-1]
 		for bit in input:
 			GPIO.output(self.SDI,int(bit))
@@ -65,36 +65,36 @@ class RGB():
 		# only update output if it's a button or hat press (not axis)
 		if commands.TYPE == "BUTTON" or commands.TYPE == "HAT":
 			#rospy.loginfo(commands)
-            if commands.HOME:
+			if commands.HOME:
 				self.LED1 = self.blue
-                self.LED2 = self.blue
-                self.LED3 = self.blue
-                self.LED4 = self.blue
-            elif commands.X:
-                self.LED1 = self.green
-                self.LED2 = self.green
-                self.LED3 = self.green
-                self.LED4 = self.green
-            elif commands.B:
+				self.LED2 = self.blue
+				self.LED3 = self.blue
+				self.LED4 = self.blue
+			elif commands.X:
+				self.LED1 = self.green
+				self.LED2 = self.green
+				self.LED3 = self.green
+				self.LED4 = self.green
+			elif commands.B:
 				self.LED1 = self.red
-                self.LED2 = self.red
-                self.LED3 = self.red
-                self.LED4 = self.red
+				self.LED2 = self.red
+				self.LED3 = self.red
+				self.LED4 = self.red
 			elif commands.A:
 				self.LED1 = self.white
-                self.LED2 = self.white
-                self.LED3 = self.white
-                self.LED4 = self.white
+				self.LED2 = self.white
+				self.LED3 = self.white
+				self.LED4 = self.white
 			elif commands.Y:
 				self.LED1 = self.yellow
-                self.LED2 = self.yellow
-                self.LED3 = self.yellow
-                self.LED4 = self.yellow
+				self.LED2 = self.yellow
+				self.LED3 = self.yellow
+				self.LED4 = self.yellow
 			else:
 				self.LED1 = self.off
-                self.LED2 = self.off
-                self.LED3 = self.off
-                self.LED4 = self.off
+				self.LED2 = self.off
+				self.LED3 = self.off
+				self.LED4 = self.off
 
 			self.hc595_in()
 			self.hc595_out()
@@ -116,8 +116,8 @@ class RGB():
 			self.LED8 = self.red
 		else:
 			self.LED8 = self.off
-        self.hc595_in()
-        self.hc595_out()
+		self.hc595_in()
+		self.hc595_out()
 
 
 	def subscribe(self):

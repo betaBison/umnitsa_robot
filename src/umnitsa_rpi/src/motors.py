@@ -46,7 +46,7 @@ class Motors():
 		self.PWM_M4.start(0.0)
 
 		self.turbo = False		# turbo mode
-        self.clearance = P.clearance    # clearance for detecting objects
+		self.clearance = P.clearance    # clearance for detecting objects
 
 
 	def subscribe(self):
@@ -67,17 +67,17 @@ class Motors():
 				rotation = self.rotation(commands.LTOGRIGHT)
 				motor_output = lateral + rotation
 				if np.amax(abs(motor_output)) > 1.0:
-                    # scale result by highest output
+					# scale result by highest output
 					motor_output /= np.amax(abs(motor_output))
 				elif self.turbo:
-                    # turbo mode amplifies all signals relative to highest
+					# turbo mode amplifies all signals relative to highest
 					motor_output /= np.amax(abs(motor_output))
 				x_M1 = motor_output.item(0)
 				x_M2 = motor_output.item(1)
 				x_M3 = motor_output.item(2)
 				x_M4 = motor_output.item(3)
 
-                print("motor outputs: ",x_M1,x_M2,x_M3,x_M4)
+				print("motor outputs: ",x_M1,x_M2,x_M3,x_M4)
 
 				self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
 				self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
@@ -109,8 +109,8 @@ class Motors():
 		if abs(RTOGRIGHT) > 0.0 or abs(RTOGUP) > 0.0:
 
 			direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
-            mag = sqrt(RTOGUP**2+RTOGUP**2) # magnitude of toggle movement
-            print("magnitude=",mag)
+			mag = sqrt(RTOGUP**2+RTOGUP**2) # magnitude of toggle movement
+			print("magnitude=",mag)
 
 			# compute each motor throttle to move in toggle direction
 			x_M1 = mag*cos(direction+pi/4.)

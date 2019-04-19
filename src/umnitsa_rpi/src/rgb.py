@@ -23,11 +23,33 @@ class RGB():
 		GPIO.setup(self.RCLK, GPIO.OUT, initial=GPIO.LOW)
 		GPIO.setup(self.SRCLK, GPIO.OUT, initial=GPIO.LOW)
 
-		self.bitlist = ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0']
+        # colors
+        self.off = ['0','0','0']
+        self.red = ['1','0','0']
+        self.green = ['0','1','0']
+        self.blue = ['0','0','1']
+        self.yellow = ['1','1','0']
+        self.purple = ['1','0','1']
+        self.cyan = ['0','1','1']
+        self.white = ['1','1','1']
+
+        # initialize LED values
+        self.LED1 = self.off
+        self.LED2 = self.off
+        self.LED3 = self.off
+        self.LED4 = self.off
+        self.LED5 = self.off
+        self.LED6 = self.off
+        self.LED7 = self.off
+        self.LED8 = self.off
+
+        self.clearance = P.clearance
+
+
 
 	def hc595_in(self):
-		input = self.bitlist[::-1]
-		print("input=",input)
+        bitlist = self.LED1 + self.LED2 + self.LED3 + self.LED4 + self.LED5 + self.LED6 + self.LED7 + self.LED8
+		input = bitlist[::-1]
 		for bit in input:
 			GPIO.output(self.SDI,int(bit))
 			GPIO.output(self.SRCLK, GPIO.HIGH)
@@ -42,105 +64,61 @@ class RGB():
 	def updateCommands(self,commands):
 		# only update output if it's a button or hat press (not axis)
 		if commands.TYPE == "BUTTON" or commands.TYPE == "HAT":
-			rospy.loginfo(commands)
-			if commands.B:
-				self.bitlist[0] = '1'
+			#rospy.loginfo(commands)
+            if commands.HOME:
+				self.LED1 = self.blue
+                self.LED2 = self.blue
+                self.LED3 = self.blue
+                self.LED4 = self.blue
+            elif commands.X:
+                self.LED1 = self.green
+                self.LED2 = self.green
+                self.LED3 = self.green
+                self.LED4 = self.green
+            elif commands.B:
+				self.LED1 = self.red
+                self.LED2 = self.red
+                self.LED3 = self.red
+                self.LED4 = self.red
+			elif commands.A:
+				self.LED1 = self.white
+                self.LED2 = self.white
+                self.LED3 = self.white
+                self.LED4 = self.white
+			elif commands.Y:
+				self.LED1 = self.yellow
+                self.LED2 = self.yellow
+                self.LED3 = self.yellow
+                self.LED4 = self.yellow
 			else:
-				self.bitlist[0] = '0'
-			if commands.A:
-				self.bitlist[1] = '1'
-			else:
-				self.bitlist[1] = '0'
-			if commands.Y:
-				self.bitlist[2] = '1'
-			else:
-				self.bitlist[2] = '0'
-			if commands.HOME:
-				self.bitlist[21:24] = ['1','0','1']
-			else:
-				self.bitlist[21:24] = ['0','0','0']
-			"""
-			if commands.X:
-				self.bitlist[3] = '1'
-			else:
-				self.bitlist[3] = '0'
-			if commands.L:
-				self.bitlist[4] = '1'
-			else:
-				self.bitlist[4] = '0'
-			if commands.R:
-				self.bitlist[5] = '1'
-			else:
-				self.bitlist[5] = '0'
-			if commands.ZL:
-				self.bitlist[6] = '1'
-			else:
-				self.bitlist[6] = '0'
-			if commands.ZR:
-				self.bitlist[7] = '1'
-			else:
-				self.bitlist[7] = '0'
-			if commands.MINUS:
-				self.bitlist[8] = '1'
-			else:
-				self.bitlist[8] = '0'
-			if commands.PLUS:
-				self.bitlist[9] = '1'
-			else:
-				self.bitlist[9] = '0'
-			if commands.LCLICK:
-				self.bitlist[10] = '1'
-			else:
-				self.bitlist[10] = '0'
-			if commands.RCLICK:
-				self.bitlist[11] = '1'
-			else:
-				self.bitlist[11] = '0'
-			if commands.HOME:
-				self.bitlist[12] = '1'
-			else:
-				self.bitlist[12] = '0'
-			if commands.CAPTURE:
-				self.bitlist[13] = '1'
-			else:
-				self.bitlist[13] = '0'
-			if commands.UP == 1:
-				self.bitlist[14] = '1'
-			else:
-				self.bitlist[14] = '0'
-			if commands.DOWN == 1:
-				self.bitlist[15] = '1'
-			else:
-				self.bitlist[15] = '0'
-			if commands.RIGHT == 1:
-				self.bitlist[16] = '1'
-			else:
-				self.bitlist[16] = '0'
-			if commands.LEFT == 1:
-				self.bitlist[17] = '1'
-			else:
-				self.bitlist[17] = '0'
-			"""
+				self.LED1 = self.off
+                self.LED2 = self.off
+                self.LED3 = self.off
+                self.LED4 = self.off
+
 			self.hc595_in()
 			self.hc595_out()
 
 	def updateUltrasonic(self,ultrasonic):
-		if ultrasonic.ULTRA1 < 0.2:
-			self.bitlist[3] = '1'
+		if ultrasonic.ULTRA1 < self.clearance:
+			self.LED5 = self.red
 		else:
-			self.bitlist[3] = '0'
-		if ultrasonic.ULTRA2 < 0.2:
-			self.bitlist[6] = '1'
+			self.LED5 = self.off
+		if ultrasonic.ULTRA2 < self.clearance:
+			self.LED6 = self.red
 		else:
-			self.bitlist[6] = '0'
-		if ultrasonic.ULTRA3 < 0.2:
-			self.bitlist[9] = '1'
+			self.LED6 = self.off
+		if ultrasonic.ULTRA3 < self.clearance:
+			self.LED7 = self.red
 		else:
-			self.bitlist[9] = '0'
-		if ultrasonic.ULTRA4 < 0.2:
-			self.bitlist[12] = '1'
+			self.LED7 = self.off
+		if ultrasonic.ULTRA4 < self.clearance:
+			self.LED8 = self.red
 		else:
-			self.bitlist[12] = '0'
+			self.LED8 = self.off
+        self.hc595_in()
+        self.hc595_out()
+
 
 	def subscribe(self):
 		rospy.init_node('rgb', anonymous=True)

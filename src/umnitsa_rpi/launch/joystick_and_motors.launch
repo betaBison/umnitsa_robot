@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="joystick_publisher" pkg="umnitsa_rpi" type="joystick.py" output="screen"/>
+    <node name="motor_subscriber" pkg="umnitsa_rpi" type="motors.py" output="screen"/>
+
+</launch>

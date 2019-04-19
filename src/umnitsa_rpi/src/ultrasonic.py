@@ -51,7 +51,7 @@ class UltrasonicPublisher():
 					   self.ULTRA4_ECHO]
 
 		# setup publisher
-		self.ultrasonic_publisher = rospy.Publisher('ultrasonic_distance',ultrasonic, queue_size=10)
+		self.ultrasonic_publisher = rospy.Publisher('ultrasonic',ultrasonic, queue_size=10)
 		rospy.init_node('ultrasonic_sensors',anonymous=True)
 		self.ultrasonic_distance = ultrasonic()
 		self.rate = rospy.Rate(5) # 10 Hz output rate

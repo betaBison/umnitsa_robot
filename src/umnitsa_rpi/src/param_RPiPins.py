@@ -25,3 +25,7 @@ RGB_SRCLK = 40
 # Magnetometer
 SDA = 3
 SCL = 5
+
+
+# wall clearance
+clearance = 0.2

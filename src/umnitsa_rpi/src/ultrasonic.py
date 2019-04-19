@@ -112,7 +112,6 @@ class UltrasonicPublisher():
 if __name__ == '__main__':
 	try:
 		publisher = UltrasonicPublisher()
-		print("step 7 done")
 		publisher.publish()
 	except rospy.ROSInterruptException:
 		GPIO.cleanup()

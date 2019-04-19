@@ -109,7 +109,7 @@ class Motors():
 		if abs(RTOGRIGHT) > 0.0 or abs(RTOGUP) > 0.0:
 
 			direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
-			mag = sqrt(RTOGUP**2+RTOGUP**2) # magnitude of toggle movement
+			mag = sqrt(RTOGUP**2+RTOGRIGHT**2) # magnitude of toggle movement
 			print("magnitude=",mag)
 
 			# compute each motor throttle to move in toggle direction

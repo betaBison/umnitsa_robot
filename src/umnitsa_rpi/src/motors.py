@@ -3,10 +3,10 @@
 Author: D. Knowles
 Desc  : ROS node that outputs to the umnitsaControl board
 """
-import RPi.GPIO as GPIO
 import time
 import rospy
-from umnitsa_rpi.msg import joystick
+from umnitsa_msgs.msg import joystick
+import RPi.GPIO as GPIO
 import param_RPiPins as P
 from math import atan2, cos, pi, sqrt
 import numpy as np

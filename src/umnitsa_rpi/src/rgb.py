@@ -7,7 +7,7 @@ Desc  : ROS node that outputs to the RGB LEDs
 import RPi.GPIO as GPIO
 import time
 import rospy
-from umnitsa_rpi.msg import joystick, ultrasonic
+from umnitsa_msgs import joystick, ultrasonic
 import param_RPiPins as P
 
 class RGB():

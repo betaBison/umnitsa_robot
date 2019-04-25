@@ -6,10 +6,11 @@ Desc  : ROS node that publishes the joystick information
 
 import time
 import sys
+sys.path.append("..")
 import os
 import pygame
 import rospy
-from umnitsa_rpi.msg import joystick
+from umnitsa_msgs.msg import joystick
 import param_joystick as J
 import numpy as np
 from subprocess import call

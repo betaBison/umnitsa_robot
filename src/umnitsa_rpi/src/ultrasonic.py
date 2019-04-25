@@ -7,7 +7,7 @@ Desc  : ROS node that publishes ultrasonic data
 
 import time
 import rospy
-from umnitsa_rpi.msg import ultrasonic
+from umnitsa_msgs import ultrasonic
 import param_RPiPins as P
 import RPi.GPIO as GPIO
 

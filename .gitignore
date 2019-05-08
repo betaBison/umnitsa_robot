@@ -3,7 +3,4 @@
 /__pycache__
 */__pycache__/
 */*/__pycache__/
-devel/
-build/
-.catkin_workspace
 src/CMakeLists.txt

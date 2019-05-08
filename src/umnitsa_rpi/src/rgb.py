@@ -121,7 +121,7 @@ class RGB():
 
 
 	def subscribe(self):
-		rospy.init_node('rgb', anonymous=True)
+		rospy.init_node('rgb', anonymous=False)
 		rospy.Subscriber('commands',joystick, self.updateCommands)
 		rospy.Subscriber('ultrasonic',ultrasonic,self.updateUltrasonic)
 

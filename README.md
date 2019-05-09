@@ -1,3 +1,7 @@
+# umnitsa_rpi
+umnitsa_rpi is a [metapackage](http://wiki.ros.org/catkin/package.xml#Metapackages).  
+
+
 ## Joystick
 description
 

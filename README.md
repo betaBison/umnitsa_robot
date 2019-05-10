@@ -1,12 +1,15 @@
 # umnitsa_rpi
-umnitsa_rpi is a [metapackage](http://wiki.ros.org/catkin/package.xml#Metapackages).  
+Umnitsa comes from the englsih transliteration of the russian word "умница" clever pesron or smarty-pants.
+Umnitsa is designed to be a clever robot.  
+
+umnitsa_rpi is a [metapackage](http://wiki.ros.org/catkin/package.xml#Metapackages) for all the packages run on the raspberry pi. Packages are located in the `src/` directory and a brief description is included below
 
 
 ## Joystick
-description
+receives input from a switch pro controller and outputs to joystick message.
 
 ## Motors
-description
+subscribes to ... and outputs motor control.  
 
 Normal mode:  
 The max throttle going forward is 71% on all motors, not 100%. This is so that moving the joystick in a steady
@@ -16,23 +19,7 @@ Turbo mode:
 If the joystick is moved at all, one of the motors is set to 100% throttle
 
 ## RGB
-Description
+Outputs to the UmnitsaRGB custom PCB  
 
 ## Ultrasonic
-description
-
-
-# umnitsa
-
-Umnitsa comes from the englsih transliteration of the russian word "умница" clever pesron or smarty-pants.
-Umnitsa is designed to be a clever robot.
-
-## Mechanical
-custom laser cut acrylic, bill of materials
-
-## Electrical
-3 custom PCBs  
-`\PCBDesign`
-
-## Software
-custom ROS package
+Inputs from the UmnitsaUltra custom PCB

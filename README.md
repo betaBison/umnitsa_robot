@@ -16,6 +16,9 @@ Install needed dependencies:
 `pip install Jetson.GPIO`
 
 ## Package Overview
+### umnitsa_robot
+`src/umnitsa_robot/` is the metapackage package that includes
+
 ### Joystick
 receives input from a switch pro controller and outputs to joystick message.
 

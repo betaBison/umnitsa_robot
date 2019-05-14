@@ -1,8 +1,0 @@
-<launch>
-
-	<node name="joystick_publisher" pkg="umnitsa_robot" type="joystick.py" output="screen"/>
-	<node name="motor_subscriber" pkg="umnitsa_robot" type="motors.py" output="screen"/>
-	<node name="rgb_subscriber" pkg="umnitsa_robot" type="rgb.py" output="screen"/>
-	<node name="ultrasonic_publisher" pkg="umnitsa_robot" type="ultrasonic.py" output="screen"/>
-
-</launch>

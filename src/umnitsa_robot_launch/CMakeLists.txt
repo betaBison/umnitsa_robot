@@ -68,11 +68,11 @@ find_package(catkin REQUIRED COMPONENTS
 #   Action2.action
 # )
 
-# Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  umnitsa_msgs
-)
+## Generate added messages and services with any dependencies listed here
+# generate_messages(
+#   DEPENDENCIES
+#   umnitsa_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##

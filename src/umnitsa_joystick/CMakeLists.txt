@@ -66,10 +66,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  umnitsa_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   umnitsa_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##

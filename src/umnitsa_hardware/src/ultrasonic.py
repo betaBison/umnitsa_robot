@@ -7,8 +7,7 @@ Desc  : ROS node that publishes ultrasonic data
 
 import time
 import rospy
-from umnitsa_msgs import ultrasonic
-import param_RPiPins as P
+from umnitsa_msgs.msg import ultrasonic
 import RPi.GPIO as GPIO
 
 class UltrasonicPublisher():
@@ -20,14 +19,14 @@ class UltrasonicPublisher():
 		self.distanceTemp = [self.maxDistance,self.maxDistance,self.maxDistance,self.maxDistance]
 
 		# pull the right pin numbers from the parameter file
-		self.ULTRA1_TRIG = P.ULTRA1_TRIG
-		self.ULTRA1_ECHO = P.ULTRA1_ECHO
-		self.ULTRA2_TRIG = P.ULTRA2_TRIG
-		self.ULTRA2_ECHO = P.ULTRA2_ECHO
-		self.ULTRA3_TRIG = P.ULTRA3_TRIG
-		self.ULTRA3_ECHO = P.ULTRA3_ECHO
-		self.ULTRA4_TRIG = P.ULTRA4_TRIG
-		self.ULTRA4_ECHO = P.ULTRA4_ECHO
+		self.ULTRA1_TRIG = rospy.get_param('ULTRA1_TRIG')
+		self.ULTRA1_ECHO = rospy.get_param('ULTRA1_ECHO')
+		self.ULTRA2_TRIG = rospy.get_param('ULTRA2_TRIG')
+		self.ULTRA2_ECHO = rospy.get_param('ULTRA2_ECHO')
+		self.ULTRA3_TRIG = rospy.get_param('ULTRA3_TRIG')
+		self.ULTRA3_ECHO = rospy.get_param('ULTRA3_ECHO')
+		self.ULTRA4_TRIG = rospy.get_param('ULTRA4_TRIG')
+		self.ULTRA4_ECHO = rospy.get_param('ULTRA4_ECHO')
 
 		GPIO.setmode(GPIO.BOARD)    # use RasPi pin numbers
 		GPIO.setwarnings(False)     # don't show setup warnings

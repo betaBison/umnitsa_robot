@@ -7,7 +7,6 @@ import time
 import rospy
 from umnitsa_msgs.msg import joystick
 import RPi.GPIO as GPIO
-import param_RPiPins as P
 from math import atan2, cos, pi, sqrt
 import numpy as np
 
@@ -16,14 +15,14 @@ class Motors():
 		"""
 		initialize pins as motor outputs
 		"""
-		GPIO.setmode(GPIO.BOARD)        # use RasPi pin numbers
+		GPIO.setmode(GPIO.BOARD)          # use RasPi pin numbers
 
-		self.DB1 = P.DB1                # Driver Board #1 INH
-		self.M1 = P.M1                  # DB #1 IN1 & IN2
-		self.M2 = P.M2                  # DB #1 IN3 & IN4
-		self.DB2 = P.DB2                # DB #2 INH
-		self.M3 = P.M3                  # DB #2 IN1 & IN2
-		self.M4 = P.M4                  # DB #2 IN3 & IN4
+		self.DB1 = rospy.get_param('DB1') # Driver Board #1 INH
+		self.M1 = rospy.get_param('M1')   # DB #1 IN1 & IN2
+		self.M2 = rospy.get_param('M2')   # DB #1 IN3 & IN4
+		self.DB2 = rospy.get_param('DB2') # DB #2 INH
+		self.M3 = rospy.get_param('M3')   # DB #2 IN1 & IN2
+		self.M4 = rospy.get_param('M4')   # DB #2 IN3 & IN4
 
 		GPIO.setwarnings(False)     # don't show setup warnings
 		# set pins as outputs and initialize to False/Low
@@ -46,7 +45,7 @@ class Motors():
 		self.PWM_M4.start(0.0)
 
 		self.turbo = False		# turbo mode
-		self.clearance = P.clearance    # clearance for detecting objects
+		self.clearance = rospy.get_param('clearance') # clearance for detecting objects
 
 
 	def subscribe(self):

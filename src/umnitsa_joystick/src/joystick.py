@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Author: D. Knowles
-Desc  : ROS node that publishes the joystick information
+Desc  : ROS node that publishes the Joystick information
 """
 
 import time
@@ -10,7 +10,7 @@ sys.path.append("..")
 import os
 import pygame
 import rospy
-from umnitsa_msgs.msg import joystick
+from umnitsa_msgs.msg import Joystick
 import numpy as np
 from subprocess import call
 
@@ -73,9 +73,9 @@ class JoystickPublisher():
 
         self.hat_status = np.zeros((4,1))
 
-        self.command_publisher = rospy.Publisher('commands', joystick, queue_size=10)
+        self.command_publisher = rospy.Publisher('commands', Joystick, queue_size=10)
         rospy.init_node('talker', anonymous=True)
-        self.commands = joystick()
+        self.commands = Joystick()
 
         sys.stdout = sys.stderr# ignore pygame messages
         os.environ["SDL_VIDEODRIVER"] = "dummy" # Removes the need to have a GUI window

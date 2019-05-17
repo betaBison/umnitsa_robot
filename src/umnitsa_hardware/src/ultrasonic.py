@@ -7,7 +7,7 @@ Desc  : ROS node that publishes ultrasonic data
 
 import time
 import rospy
-from umnitsa_msgs.msg import ultrasonic
+from umnitsa_msgs.msg import Ultrasonic
 import RPi.GPIO as GPIO
 
 class UltrasonicPublisher():
@@ -50,9 +50,9 @@ class UltrasonicPublisher():
 					   self.ULTRA4_ECHO]
 
 		# setup publisher
-		self.ultrasonic_publisher = rospy.Publisher('ultrasonic',ultrasonic, queue_size=10)
+		self.ultrasonic_publisher = rospy.Publisher('ultrasonic',Ultrasonic, queue_size=10)
 		rospy.init_node('ultrasonic_sensors',anonymous=True)
-		self.ultrasonic_distance = ultrasonic()
+		self.ultrasonic_distance = Ultrasonic()
 		self.rate = rospy.Rate(5) # 10 Hz output rate
 		# wait for sensor to settle
 		time.sleep(5)

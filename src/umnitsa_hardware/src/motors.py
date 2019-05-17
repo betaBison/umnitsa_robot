@@ -5,7 +5,7 @@ Desc  : ROS node that outputs to the umnitsaControl board
 """
 import time
 import rospy
-from umnitsa_msgs.msg import joystick
+from umnitsa_msgs.msg import Joystick
 import RPi.GPIO as GPIO
 from math import atan2, cos, pi, sqrt
 import numpy as np
@@ -50,7 +50,7 @@ class Motors():
 
 	def subscribe(self):
 		rospy.init_node('motors', anonymous=True)
-		rospy.Subscriber('commands',joystick, self.updateOutput)
+		rospy.Subscriber('commands',Joystick, self.updateOutput)
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 

@@ -7,7 +7,7 @@ Desc  : ROS node that outputs to the RGB LEDs
 import RPi.GPIO as GPIO
 import time
 import rospy
-from umnitsa_msgs.msg import joystick, ultrasonic
+from umnitsa_msgs.msg import Joystick, Ultrasonic
 
 class RGB():
 	def __init__(self):
@@ -121,8 +121,8 @@ class RGB():
 
 	def subscribe(self):
 		rospy.init_node('rgb', anonymous=False)
-		rospy.Subscriber('commands',joystick, self.updateCommands)
-		rospy.Subscriber('ultrasonic',ultrasonic,self.updateUltrasonic)
+		rospy.Subscriber('commands',Joystick, self.updateCommands)
+		rospy.Subscriber('ultrasonic',Ultrasonic,self.updateUltrasonic)
 
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()

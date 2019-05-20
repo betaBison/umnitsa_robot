@@ -9,5 +9,7 @@
 	<node name="motor_subscriber" pkg="umnitsa_hardware" type="motors.py" output="screen"/>
 	<node name="rgb_subscriber" pkg="umnitsa_hardware" type="rgb.py" output="screen"/>
 	<node name="ultrasonic_publisher" pkg="umnitsa_hardware" type="ultrasonic.py" output="screen"/>
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
 
 </launch>

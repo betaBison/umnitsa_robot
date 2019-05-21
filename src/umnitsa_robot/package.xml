@@ -53,6 +53,8 @@
   <exec_depend>umnitsa_hardware</exec_depend>
   <exec_depend>umnitsa_joystick</exec_depend>
   <exec_depend>umnitsa_robot_launch</exec_depend>
+  <exec_depend>realsense-ros</exec_depend>
+
 
 
   <!-- The export tag contains other, unspecified, tags -->

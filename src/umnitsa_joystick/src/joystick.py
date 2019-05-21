@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Author: D. Knowles
-Desc  : ROS node that publishes the joystick information
+Desc  : ROS node that publishes the Joystick information
 """
 
 import time
@@ -10,18 +10,17 @@ sys.path.append("..")
 import os
 import pygame
 import rospy
-from umnitsa_msgs.msg import joystick
-import param_joystick as J
+from umnitsa_msgs.msg import Joystick
 import numpy as np
 from subprocess import call
 
 class JoystickPublisher():
     def __init__(self):
         # initialize axes from parameter file
-        self.LTOGRIGHT = J.LTOGRIGHT
-        self.LTOGUP = J.LTOGUP
-        self.RTOGRIGHT = J.RTOGRIGHT
-        self.RTOGUP = J.RTOGUP
+        self.LTOGRIGHT = rospy.get_param('LTOGRIGHT')
+        self.LTOGUP = rospy.get_param('LTOGUP')
+        self.RTOGRIGHT = rospy.get_param('RTOGRIGHT')
+        self.RTOGUP = rospy.get_param('RTOGUP')
         self.calibration = [1.0,    # LTOG Right
                             1.0,    # LTOG Left
                             1.0,    # LTOG Up
@@ -34,49 +33,49 @@ class JoystickPublisher():
 
         # initilize buttons and hat from parameter file
         # initilize buttons from parameter file
-        self.B = J.B
-        self.A = J.A
-        self.Y = J.Y
-        self.X = J.X
-        self.L = J.L
-        self.R = J.R
-        self.ZL = J.ZL
-        self.ZR = J.ZR
-        self.MINUS = J.MINUS
-        self.PLUS = J.PLUS
-        self.LCLICK = J.LCLICK
-        self.RCLICK = J.RCLICK
-        self.HOME = J.HOME
-        self.CAPTURE = J.CAPTURE
+        self.B = rospy.get_param('B')
+        self.A = rospy.get_param('A')
+        self.Y = rospy.get_param('Y')
+        self.X = rospy.get_param('X')
+        self.L = rospy.get_param('L')
+        self.R = rospy.get_param('R')
+        self.ZL = rospy.get_param('ZL')
+        self.ZR = rospy.get_param('ZR')
+        self.MINUS = rospy.get_param('MINUS')
+        self.PLUS = rospy.get_param('PLUS')
+        self.LCLICK = rospy.get_param('LCLICK')
+        self.RCLICK = rospy.get_param('RCLICK')
+        self.HOME = rospy.get_param('HOME')
+        self.CAPTURE = rospy.get_param('CAPTURE')
         # initialize hat from parameter file
-        self.UP = J.UP
-        self.DOWN = J.DOWN
-        self.RIGHT = J.RIGHT
-        self.LEFT = J.LEFT
+        self.UP = rospy.get_param('UP')
+        self.DOWN = rospy.get_param('DOWN')
+        self.RIGHT = rospy.get_param('RIGHT')
+        self.LEFT = rospy.get_param('LEFT')
 
-        self.button_pins = [J.B,
-                            J.A,
-                            J.Y,
-                            J.X,
-                            J.L,
-                            J.R,
-                            J.ZL,
-                            J.ZR,
-                            J.MINUS,
-                            J.PLUS,
-                            J.LCLICK,
-                            J.RCLICK,
-                            J.HOME,
-                            J.CAPTURE]
+        self.button_pins = [self.B,
+                            self.A,
+                            self.Y,
+                            self.X,
+                            self.L,
+                            self.R,
+                            self.ZL,
+                            self.ZR,
+                            self.MINUS,
+                            self.PLUS,
+                            self.LCLICK,
+                            self.RCLICK,
+                            self.HOME,
+                            self.CAPTURE]
 
         self.num_buttons = len(self.button_pins)
         self.button_status = np.zeros((self.num_buttons,1))
 
         self.hat_status = np.zeros((4,1))
 
-        self.command_publisher = rospy.Publisher('commands', joystick, queue_size=10)
+        self.command_publisher = rospy.Publisher('commands', Joystick, queue_size=10)
         rospy.init_node('talker', anonymous=True)
-        self.commands = joystick()
+        self.commands = Joystick()
 
         sys.stdout = sys.stderr# ignore pygame messages
         os.environ["SDL_VIDEODRIVER"] = "dummy" # Removes the need to have a GUI window

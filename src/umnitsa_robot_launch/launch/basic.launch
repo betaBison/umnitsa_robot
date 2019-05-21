@@ -1,0 +1,15 @@
+<launch>
+    <!-- load parameter files -->
+    <rosparam command="load" file="$(find umnitsa_robot_launch)/param/joystick.yaml"/>
+    <rosparam command="load" file="$(find umnitsa_robot_launch)/param/rpi_pins.yaml"/>
+    <rosparam command="load" file="$(find umnitsa_robot_launch)/param/navigation.yaml"/>
+
+    <!-- start nodes -->
+	<node name="joystick_publisher" pkg="umnitsa_joystick" type="joystick.py" output="screen"/>
+	<node name="motor_subscriber" pkg="umnitsa_hardware" type="motors.py" output="screen"/>
+	<node name="rgb_subscriber" pkg="umnitsa_hardware" type="rgb.py" output="screen"/>
+	<node name="ultrasonic_publisher" pkg="umnitsa_hardware" type="ultrasonic.py" output="screen"/>
+   	<!-- <include file="$(find rplidar_ros)/launch/rplidar.launch" />-->
+
+
+</launch>

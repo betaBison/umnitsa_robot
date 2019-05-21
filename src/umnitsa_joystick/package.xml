@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>umnitsa_robot</name>
+  <name>umnitsa_joystick</name>
   <version>0.0.0</version>
-  <description>The umnitsa_robot package</description>
+  <description>The umnitsa_joystick package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/my_metapackage</url> -->
+  <!-- <url type="website">http://wiki.ros.org/umnitsa_joystick</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
@@ -49,15 +49,13 @@
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <exec_depend>robot_setup_tf</exec_depend>
-  <exec_depend>umnitsa_hardware</exec_depend>
-  <exec_depend>umnitsa_joystick</exec_depend>
-  <exec_depend>umnitsa_robot_launch</exec_depend>
+  <build_depend>umnitsa_msgs</build_depend>
+  <build_export_depend>umnitsa_msgs</build_export_depend>
+  <exec_depend>umnitsa_msgs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
-      <metapackage/>
     <!-- Other tools can request additional information be placed here -->
 
   </export>

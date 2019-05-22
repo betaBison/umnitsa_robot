@@ -52,20 +52,20 @@ class Motors():
 	def subscribe(self):
 		rospy.init_node('motors', anonymous=False)
 		rospy.Subscriber('cmd_vel',Twist, self.updateOutput)
-        rospy.Subscriber('commands',Joystick, self.updateSettings)
+		rospy.Subscriber('commands',Joystick, self.updateSettings)
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 
-    def updateSettings(self,commands):
-        if commands.TYPE == "BUTTON":
+	def updateSettings(self,commands):
+		if commands.TYPE == "BUTTON":
 			if commands.X:
 				self.turbo = not(self.turbo)
 
-    def updateOutput(self,cmd_vel):
-        # check if any toggle is not 0.0 (i.e. False)
-        if cmd_vel.linear.x or cmd_vel.linear.y or cmd_vel.angular.z:
-            lateral = self.lateral(cmd_vel.linear.x,cmd_vel.linear.y)
-            rotation = self.rotation(cmd_vel.angular.z)
+	def updateOutput(self,cmd_vel):
+		# check if any toggle is not 0.0 (i.e. False)
+		if cmd_vel.linear.x or cmd_vel.linear.y or cmd_vel.angular.z:
+			lateral = self.lateral(cmd_vel.linear.x,cmd_vel.linear.y)
+			rotation = self.rotation(cmd_vel.angular.z)
 			motor_output = lateral + rotation
 			if np.amax(abs(motor_output)) > 1.0:
 				# scale result by highest output

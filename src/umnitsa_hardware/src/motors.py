@@ -5,6 +5,7 @@ Desc  : ROS node that outputs to the umnitsaControl board
 """
 import time
 import rospy
+from geometry_msgs.msg import Twist
 from umnitsa_msgs.msg import Joystick
 import RPi.GPIO as GPIO
 from math import atan2, cos, pi, sqrt
@@ -50,65 +51,66 @@ class Motors():
 
 	def subscribe(self):
 		rospy.init_node('motors', anonymous=True)
-		rospy.Subscriber('commands',Joystick, self.updateOutput)
+		rospy.Subscriber('cmd_vel',Twist, self.updateOutput)
+        rospy.Subscriber('commands',Joystick, self.updateSettings)
 		# spin() simply keeps python from exiting until this node is stopped
 		rospy.spin()
 
-	def updateOutput(self,commands):
-		if commands.TYPE == "BUTTON":
+    def updateSettings(self,commands):
+        if commands.TYPE == "BUTTON":
 			if commands.X:
 				self.turbo = not(self.turbo)
 
-		elif commands.TYPE == "AXIS":
-			# check if any toggle is not 0.0 (i.e. False)
-			if commands.RTOGRIGHT or commands.RTOGUP or commands.LTOGRIGHT:
-				lateral = self.lateral(commands.RTOGRIGHT,commands.RTOGUP)
-				rotation = self.rotation(commands.LTOGRIGHT)
-				motor_output = lateral + rotation
-				if np.amax(abs(motor_output)) > 1.0:
-					# scale result by highest output
-					motor_output /= np.amax(abs(motor_output))
-				elif self.turbo:
-					# turbo mode amplifies all signals relative to highest
-					motor_output /= np.amax(abs(motor_output))
-				x_M1 = motor_output.item(0)
-				x_M2 = motor_output.item(1)
-				x_M3 = motor_output.item(2)
-				x_M4 = motor_output.item(3)
+    def updateOutput(self,cmd_vel):
+        # check if any toggle is not 0.0 (i.e. False)
+        if cmd_vel.linear.x or cmd_vel.linear.y or cmd_vel.angular.z:
+            lateral = self.lateral(cmd_vel.linear.x,cmd_vel.linear.y)
+            rotation = self.rotation(cmd_vel.angular.z)
+			motor_output = lateral + rotation
+			if np.amax(abs(motor_output)) > 1.0:
+				# scale result by highest output
+				motor_output /= np.amax(abs(motor_output))
+			elif self.turbo:
+				# turbo mode amplifies all signals relative to highest
+				motor_output /= np.amax(abs(motor_output))
+			x_M1 = motor_output.item(0)
+			x_M2 = motor_output.item(1)
+			x_M3 = motor_output.item(2)
+			x_M4 = motor_output.item(3)
 
-				print("motor outputs: ",x_M1,x_M2,x_M3,x_M4)
+			print("motor outputs: ",x_M1,x_M2,x_M3,x_M4)
 
-				self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
-				self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
-				self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
-				self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
+			self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
+			self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
+			self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
+			self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
 
-				GPIO.output(self.DB1,True)   # enable DB #1
-				GPIO.output(self.DB2,True)   # enable DB #2
+			GPIO.output(self.DB1,True)   # enable DB #1
+			GPIO.output(self.DB2,True)   # enable DB #2
 
-			else:
-				# disable output if right and left toggle are 0.0
-				GPIO.output(self.DB1,False)
-				GPIO.output(self.DB2,False)
+		else:
+			# disable output if right and left toggle are 0.0
+			GPIO.output(self.DB1,False)
+			GPIO.output(self.DB2,False)
 
 
 	def rotation(self,LTOGRIGHT):
 		"""
 		rotate robot with the left toggle
 		"""
-		x = LTOGRIGHT
+		x = -LTOGRIGHT
 
 		return np.array([x,x,x,x])
 
 
-	def lateral(self,RTOGRIGHT,RTOGUP):
+	def lateral(self,vel_x,vel_y):
 		"""
 		move robot laterally with the right toggle
 		"""
-		if abs(RTOGRIGHT) > 0.0 or abs(RTOGUP) > 0.0:
+		if abs(vel_x) > 0.0 or abs(vel_y) > 0.0:
 
-			direction = atan2(RTOGUP,RTOGRIGHT) # direction of toggle movement
-			mag = sqrt(RTOGUP**2+RTOGRIGHT**2) # magnitude of toggle movement
+			direction = atan2(vel_y,-vel_x) # direction of toggle movement
+			mag = sqrt(vel_y**2+vel_x**2) # magnitude of toggle movement
 			print("magnitude=",mag)
 
 			# compute each motor throttle to move in toggle direction

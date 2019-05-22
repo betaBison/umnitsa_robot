@@ -11,6 +11,7 @@ import os
 import pygame
 import rospy
 from umnitsa_msgs.msg import Joystick
+from geometry_msgs.msg import Twist
 import numpy as np
 from subprocess import call
 
@@ -74,8 +75,10 @@ class JoystickPublisher():
         self.hat_status = np.zeros((4,1))
 
         self.command_publisher = rospy.Publisher('commands', Joystick, queue_size=10)
-        rospy.init_node('talker', anonymous=True)
+        self.cmd_vel_publisher = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+        rospy.init_node('talker', anonymous=False)
         self.commands = Joystick()
+        self.cmd_vel = Twist()
 
         sys.stdout = sys.stderr# ignore pygame messages
         os.environ["SDL_VIDEODRIVER"] = "dummy" # Removes the need to have a GUI window
@@ -131,8 +134,10 @@ class JoystickPublisher():
                         rospy.loginfo(self.commands)
 
                         # only publish commands if timeout has passed
-                        if self.commands.TYPE != "AXIS" or (self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
+                        if self.commands.TYPE != "AXIS":
                             self.command_publisher.publish(self.commands) # publish updated commands
+                        elif self.commands.TYPE == "AXIS" and (time.time() - self.axis_timer) > self.timeout):
+                            self.cmd_vel_publisher.publish(self.cmd_vel) # publish updated cmd_vel
                             if self.commands.TYPE == "AXIS":
                                 self.axis_timer = time.time()
                                 self.axis_updated = True
@@ -143,7 +148,7 @@ class JoystickPublisher():
                     if (time.time() - self.axis_timer) > self.timeout and self.axis_updated:
                         self.updateAxis()
                         self.commands.TYPE = "AXIS"
-                        self.command_publisher.publish(self.commands) # publish updated commands
+                        self.cmd_vel_publisher.publish(self.cmd_vel) # publish updated cmd_vel
                         self.axis_updated = False
 
 
@@ -151,27 +156,29 @@ class JoystickPublisher():
     def updateAxis(self):
         LTOGRIGHT = self.joystick.get_axis(self.LTOGRIGHT)
         if LTOGRIGHT > 0:
-            self.commands.LTOGRIGHT = self.saturate(self.calibration[0]*LTOGRIGHT)
+            self.cmd_vel.angular.z = -self.saturate(self.calibration[0]*LTOGRIGHT)
         else:
-            self.commands.LTOGRIGHT = self.saturate(self.calibration[1]*LTOGRIGHT)
+            self.cmd_vel.angular.z = -self.saturate(self.calibration[1]*LTOGRIGHT)
 
+        """
         LTOGUP = self.joystick.get_axis(self.LTOGUP)
         if LTOGUP > 0:
             self.commands.LTOGUP = self.saturate(-self.calibration[2]*LTOGUP)
         else:
             self.commands.LTOGUP = self.saturate(-self.calibration[3]*LTOGUP)
+        """
 
         RTOGRIGHT = self.joystick.get_axis(self.RTOGRIGHT)
         if RTOGRIGHT > 0:
-            self.commands.RTOGRIGHT = self.saturate(self.calibration[4]*RTOGRIGHT)
+            self.cmd_vel.linear.y = -self.saturate(self.calibration[4]*RTOGRIGHT)
         else:
-            self.commands.RTOGRIGHT = self.saturate(self.calibration[5]*RTOGRIGHT)
+            self.cmd_vel.linear.y = -self.saturate(self.calibration[5]*RTOGRIGHT)
 
         RTOGUP = self.joystick.get_axis(self.RTOGUP)
         if RTOGUP > 0:
-            self.commands.RTOGUP = self.saturate(-self.calibration[6]*RTOGUP)
+            self.cmd_vel.linear.x = self.saturate(-self.calibration[6]*RTOGUP)
         else:
-            self.commands.RTOGUP = self.saturate(-self.calibration[7]*RTOGUP)
+            self.cmd_vel.linear.x = self.saturate(-self.calibration[7]*RTOGUP)
 
     def checkButtons(self):
         new_status = np.zeros((self.num_buttons,1))

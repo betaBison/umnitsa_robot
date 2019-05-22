@@ -50,7 +50,7 @@ class Motors():
 
 
 	def subscribe(self):
-		rospy.init_node('motors', anonymous=True)
+		rospy.init_node('motors', anonymous=False)
 		rospy.Subscriber('cmd_vel',Twist, self.updateOutput)
         rospy.Subscriber('commands',Joystick, self.updateSettings)
 		# spin() simply keeps python from exiting until this node is stopped
@@ -109,8 +109,8 @@ class Motors():
 		"""
 		if abs(vel_x) > 0.0 or abs(vel_y) > 0.0:
 
-			direction = atan2(vel_y,-vel_x) # direction of toggle movement
-			mag = sqrt(vel_y**2+vel_x**2) # magnitude of toggle movement
+			direction = atan2(vel_x,-vel_y) # direction of toggle movement
+			mag = sqrt(vel_x**2+vel_y**2) # magnitude of toggle movement
 			print("magnitude=",mag)
 
 			# compute each motor throttle to move in toggle direction

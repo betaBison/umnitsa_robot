@@ -4,3 +4,4 @@
 */__pycache__/
 */*/__pycache__/
 src/CMakeLists.txt
+src/umnitsa_hardware/env-hooks/*

@@ -1,15 +1,32 @@
 <launch>
-    <!-- load parameter files -->
-    <rosparam command="load" file="$(find umnitsa_robot_launch)/param/joystick.yaml"/>
-    <rosparam command="load" file="$(find umnitsa_robot_launch)/param/rpi_pins.yaml"/>
+    <!-- load architecture environment variable -->
+    <arg name="architecture" value="$(optenv ARCHITECTURE)" />
+
+    <!-- nodes that run on all architectures -->
     <rosparam command="load" file="$(find umnitsa_robot_launch)/param/navigation.yaml"/>
+    <rosparam command="load" file="$(find umnitsa_joystick)/param/joystick.yaml"/>
+    <node name="joystick_publisher" pkg="umnitsa_joystick" type="joystick.py" output="screen"/>
 
-    <!-- start nodes -->
-	<node name="joystick_publisher" pkg="umnitsa_joystick" type="joystick.py" output="screen"/>
-	<node name="motor_subscriber" pkg="umnitsa_hardware" type="motors.py" output="screen"/>
-	<node name="rgb_subscriber" pkg="umnitsa_hardware" type="rgb.py" output="screen"/>
-	<node name="ultrasonic_publisher" pkg="umnitsa_hardware" type="ultrasonic.py" output="screen"/>
-   	<!-- <include file="$(find rplidar_ros)/launch/rplidar.launch" />-->
+    <!-- nodes that run on desktop -->
+    <group if="$(eval architecture == 'desktop')">
+        <include file="$(find umnitsa_gs)/launch/ground_station.launch" />
+    </group>
 
+    <!-- nodes that run on umnitsa_pi -->
+    <group if="$(eval architecture == 'raspi')">
+        <rosparam command="load" file="$(find umnitsa_hardware)/param/raspi_pins.yaml"/>
+        <node name="motor_subscriber" pkg="umnitsa_hardware" type="motors.py" output="screen"/>
+    	<node name="rgb_subscriber" pkg="umnitsa_hardware" type="rgb.py" output="screen"/>
+        <node name="ultrasonic_publisher" pkg="umnitsa_hardware" type="ultrasonic.py" output="screen"/>
+    </group>
+
+    <!-- nodes that run on umnitsa_nano -->
+    <group if="$(eval architecture == 'nano')">
+        <rosparam command="load" file="$(find umnitsa_hardware)/param/nano_pins.yaml"/>
+        <node name="motor_subscriber" pkg="umnitsa_hardware" type="motors.py" output="screen"/>
+    	<node name="rgb_subscriber" pkg="umnitsa_hardware" type="rgb.py" output="screen"/>
+        <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+        <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+    </group>
 
 </launch>

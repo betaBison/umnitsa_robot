@@ -3,11 +3,15 @@
 Author: D. Knowles
 Desc  : ROS node that outputs to the umnitsaControl board
 """
+import os
 import time
 import rospy
 from geometry_msgs.msg import Twist
 from umnitsa_msgs.msg import Joystick
-import RPi.GPIO as GPIO
+if (os.environ['ARCHITECTURE'] == 'raspi'):
+    import RPi.GPIO as GPIO
+elif (os.environ['ARCHITECTURE'] == 'nano'):
+    import Jetson.GPIO as GPIO
 from math import atan2, cos, pi, sqrt
 import numpy as np
 

@@ -4,11 +4,14 @@
 Author: D. Knowles
 Desc  : ROS node that publishes ultrasonic data
 """
-
+import os
 import time
 import rospy
 from umnitsa_msgs.msg import Ultrasonic
-import RPi.GPIO as GPIO
+if (os.environ['ARCHITECTURE'] == 'raspi'):
+    import RPi.GPIO as GPIO
+elif (os.environ['ARCHITECTURE'] == 'nano'):
+    import Jetson.GPIO as GPIO
 
 class UltrasonicPublisher():
 	def __init__(self):

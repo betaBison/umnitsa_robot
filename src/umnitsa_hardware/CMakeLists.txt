@@ -1,6 +1,22 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(umnitsa_hardware)
 
+#----------------ENVIRONMENTAL VARIABLES--------------------------#
+EXECUTE_PROCESS( COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE )
+if( ${ARCHITECTURE} STREQUAL "x86_64" )
+    file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/architecture.sh "export ARCHITECTURE='desktop'")
+elseif( ${ARCHITECTURE} STREQUAL "armv7l" )
+    file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/architecture.sh "export ARCHITECTURE='raspi'")
+elseif( ${ARCHITECTURE} STREQUAL "aarch64" )
+    file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/architecture.sh "export ARCHITECTURE='nano'")
+endif()
+
+catkin_package()
+catkin_add_env_hooks(architecture
+  SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
+#-----------------------------------------------------------------#
+
+
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 

@@ -4,9 +4,13 @@ Author: D. Knowles
 Desc  : ROS node that outputs to the RGB LEDs
 """
 
-import RPi.GPIO as GPIO
+import os
 import time
 import rospy
+if (os.environ['ARCHITECTURE'] == 'raspi'):
+    import RPi.GPIO as GPIO
+elif (os.environ['ARCHITECTURE'] == 'nano'):
+    import Jetson.GPIO as GPIO
 from umnitsa_msgs.msg import Joystick, Ultrasonic
 
 class RGB():

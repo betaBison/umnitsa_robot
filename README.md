@@ -1,7 +1,9 @@
 # umnitsa_robot
 Umnitsa comes from the englsih transliteration of the russian word "умница" clever pesron or smarty-pants.
 Umnitsa is designed to be a clever robot.  
-
+  
+See also [umnitsa_msgs](https://github.com/betaBison/umnitsa_msgs), [umnitsa_gs](https://github.com/betaBison/umnitsa_gs), amd [umnitsa_mechanical](https://github.com/betaBison/umnitsa_mechanical).
+  
 umnitsa_robot is a [metapackage](http://wiki.ros.org/catkin/package.xml#Metapackages) for all the packages that run on the robot's computer. Packages are located in the `src/` directory and a brief description of each is included below.
 
 ## Setup

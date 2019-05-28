@@ -10,6 +10,7 @@
     <!-- nodes that run on desktop -->
     <group if="$(eval architecture == 'desktop')">
         <include file="$(find umnitsa_gs)/launch/ground_station.launch" />
+        <node name="cam_publisher" pkg="webcam" type="cam_publisher" output="screen"/>
     </group>
 
     <!-- nodes that run on umnitsa_pi -->
@@ -18,6 +19,7 @@
         <node name="motor_subscriber" pkg="umnitsa_hardware" type="motors.py" output="screen"/>
     	<node name="rgb_subscriber" pkg="umnitsa_hardware" type="rgb.py" output="screen"/>
         <node name="ultrasonic_publisher" pkg="umnitsa_hardware" type="ultrasonic.py" output="screen"/>
+        <node name="cam_publisher" pkg="webcam" type="cam_publisher" output="screen"/>
     </group>
 
     <!-- nodes that run on umnitsa_nano -->

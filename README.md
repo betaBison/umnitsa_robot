@@ -8,7 +8,7 @@ umnitsa_robot is a [metapackage](http://wiki.ros.org/catkin/package.xml#Metapack
 
 ## Setup
 This package is currently compatible with the Raspberry Pi 3 B+ and Jetson Nano.
-
+   
 ### Raspberry Pi
 Install needed dependencies:  
 `pip install`
@@ -16,6 +16,20 @@ Install needed dependencies:
 ### Jetson Nano
 Install needed dependencies:  
 `pip install Jetson.GPIO`
+
+Since this repo contains the realsesnse-ros repository as a submodule it's important to run the following command  
+`git clone --recursive <URL to git repo>`  
+If you failed to do this initially, then inside this repository run  
+`git submodule update --init --recursive`  
+The realsense-ros also requires the latest [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense/releases). Jetson Nano [installation instructions](https://github.com/JetsonHacksNano/installLibrealsense).
+
+### Desktop
+Since this repo contains the realsesnse-ros repository as a submodule it's important to run the following command  
+`git clone --recursive <URL to git repo>`  
+If you failed to do this initially, then inside this repository run  
+`git submodule update --init --recursive`  
+The realsense-ros also requires the latest [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense/releases). Linux [installation instructions](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md).
+
 
 ## Package Overview
 ### umnitsa_robot

@@ -28,7 +28,12 @@ Since this repo contains the realsesnse-ros repository as a submodule it's impor
 `git clone --recursive <URL to git repo>`  
 If you failed to do this initially, then inside this repository run  
 `git submodule update --init --recursive`  
-The realsense-ros also requires the latest [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense/releases). Linux [installation instructions](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md).
+The realsense-ros also requires the latest [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense/releases). Linux [installation instructions](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md). You must install the dev package  
+`sudo apt install librealsense2-dkms librealsense2-utils librealsense2-dev`   
+   
+Install pygame for the joystick controller  
+`pip2 install pygame`
+
 
 
 ## Package Overview

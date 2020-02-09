@@ -31,7 +31,7 @@ class Motors():
 		self.turbo = False		# turbo mode
 		self.arch = os.environ['ARCHITECTURE']
 
-		if self.arch = 'raspi':
+		if self.arch == 'raspi':
 			GPIO.setmode(GPIO.BOARD)          # use RasPi pin numbers
 			GPIO.setwarnings(False)     # don't show setup warnings
 			# set pins as outputs and initialize to False/Low
@@ -54,11 +54,14 @@ class Motors():
 			self.PWM_M4.start(0.0)
 
 		else:
-			try:
-				connection = nanpy.SerialManager()
-				self.a = nanpy.ArduinoApi(connection = connection)
-			except:
-				print("Failed to connect to Arduino")
+			no_connection = True
+			while no_connection:
+				try:
+					connection = nanpy.SerialManager()
+					self.a = nanpy.ArduinoApi(connection = connection)
+					no_connection = False
+				except:
+					print("Failed to connect to Arduino")
 			self.a.pinMode(self.DB1, self.a.OUTPUT)
 			self.a.pinMode(self.M1, self.a.OUTPUT)
 			self.a.pinMode(self.M2, self.a.OUTPUT)
@@ -111,8 +114,8 @@ class Motors():
 				self.a.analogWrite(self.M3,255*(0.5 + x_M3*0.5))
 				self.a.analogWrite(self.M4,255*(0.5 + x_M4*0.5))
 
-				self.digitalWrite(self.DB1,self.a.HIGH) # enable DB #1
-				self.digitalWrite(self.DB2,self.a.HIGH) # enable DB #2
+				self.a.digitalWrite(self.DB1,self.a.HIGH) # enable DB #1
+				self.a.digitalWrite(self.DB2,self.a.HIGH) # enable DB #2
 
 		else:
 			# disable output if right and left toggle are 0.0
@@ -120,8 +123,8 @@ class Motors():
 				GPIO.output(self.DB1,False)
 				GPIO.output(self.DB2,False)
 			else:
-				self.digitalWrite(self.DB1,self.a.LOW)
-				self.digitalWrite(self.DB2,self.a.LOW)
+				self.a.digitalWrite(self.DB1,self.a.LOW)
+				self.a.digitalWrite(self.DB2,self.a.LOW)
 
 
 	def rotation(self,LTOGRIGHT):
@@ -241,8 +244,8 @@ class Motors():
 			GPIO.output(self.DB1,False)
 			GPIO.output(self.DB2,False)
 		else:
-			self.digitalWrite(self.DB1,self.a.LOW)
-			self.digitalWrite(self.DB2,self.a.LOW)
+			self.a.digitalWrite(self.DB1,self.a.LOW)
+			self.a.digitalWrite(self.DB2,self.a.LOW)
 
 if __name__ == '__main__':
 	try:

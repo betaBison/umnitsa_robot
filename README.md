@@ -15,13 +15,16 @@ Install needed dependencies:
 
 ### Jetson Nano
 Install needed dependencies:  
-`pip2 install Jetson.GPIO`pygame
+`pip2 install Jetson.GPIO pygame nanpy`
 
 Since this repo contains the realsesnse-ros repository as a submodule it's important to run the following command  
 `git clone --recursive <URL to git repo>`  
 If you failed to do this initially, then inside this repository run  
 `git submodule update --init --recursive`  
 The realsense-ros also requires the latest [Intel RealSense SDK](https://github.com/IntelRealSense/librealsense/releases). Jetson Nano [installation instructions](https://github.com/JetsonHacksNano/installLibrealsense).
+
+#### Arduino Firmware
+Follow directions here to upload correct firmware to arduino (https://github.com/nanpy/nanpy-firmware)
 
 #### Pygame errors:
 If there are erros installing pygame, you may need to add its dependencies.  

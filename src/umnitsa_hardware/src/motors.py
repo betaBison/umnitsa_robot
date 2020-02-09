@@ -9,9 +9,9 @@ import rospy
 from geometry_msgs.msg import Twist
 from umnitsa_msgs.msg import Joystick
 if (os.environ['ARCHITECTURE'] == 'raspi'):
-    import RPi.GPIO as GPIO
+	import RPi.GPIO as GPIO
 elif (os.environ['ARCHITECTURE'] == 'nano'):
-    import Jetson.GPIO as GPIO
+	import nanpy
 from math import atan2, cos, pi, sqrt
 import numpy as np
 
@@ -20,7 +20,6 @@ class Motors():
 		"""
 		initialize pins as motor outputs
 		"""
-		GPIO.setmode(GPIO.BOARD)          # use RasPi pin numbers
 
 		self.DB1 = rospy.get_param('DB1') # Driver Board #1 INH
 		self.M1 = rospy.get_param('M1')   # DB #1 IN1 & IN2
@@ -29,29 +28,43 @@ class Motors():
 		self.M3 = rospy.get_param('M3')   # DB #2 IN1 & IN2
 		self.M4 = rospy.get_param('M4')   # DB #2 IN3 & IN4
 
-		GPIO.setwarnings(False)     # don't show setup warnings
-		# set pins as outputs and initialize to False/Low
-		GPIO.setup(self.DB1,GPIO.OUT,initial=False)
-		GPIO.setup(self.M1,GPIO.OUT,initial=False)
-		GPIO.setup(self.M2,GPIO.OUT,initial=False)
-		GPIO.setup(self.DB2,GPIO.OUT,initial=False)
-		GPIO.setup(self.M3,GPIO.OUT,initial=False)
-		GPIO.setup(self.M4,GPIO.OUT,initial=False)
-
-		# setup all pwm outputs
-		self.frequency = 500.0          # pwm frequency
-		self.PWM_M1 = GPIO.PWM(self.M1,self.frequency)
-		self.PWM_M1.start(0.0)
-		self.PWM_M2 = GPIO.PWM(self.M2,self.frequency)
-		self.PWM_M2.start(0.0)
-		self.PWM_M3 = GPIO.PWM(self.M3,self.frequency)
-		self.PWM_M3.start(0.0)
-		self.PWM_M4 = GPIO.PWM(self.M4,self.frequency)
-		self.PWM_M4.start(0.0)
-
 		self.turbo = False		# turbo mode
-		self.clearance = rospy.get_param('clearance') # clearance for detecting objects
+		self.arch = os.environ['ARCHITECTURE']
 
+		if self.arch = 'raspi':
+			GPIO.setmode(GPIO.BOARD)          # use RasPi pin numbers
+			GPIO.setwarnings(False)     # don't show setup warnings
+			# set pins as outputs and initialize to False/Low
+			GPIO.setup(self.DB1,GPIO.OUT,initial=False)
+			GPIO.setup(self.M1,GPIO.OUT,initial=False)
+			GPIO.setup(self.M2,GPIO.OUT,initial=False)
+			GPIO.setup(self.DB2,GPIO.OUT,initial=False)
+			GPIO.setup(self.M3,GPIO.OUT,initial=False)
+			GPIO.setup(self.M4,GPIO.OUT,initial=False)
+
+			# setup all pwm outputs
+			self.frequency = 500.0          # pwm frequency
+			self.PWM_M1 = GPIO.PWM(self.M1,self.frequency)
+			self.PWM_M1.start(0.0)
+			self.PWM_M2 = GPIO.PWM(self.M2,self.frequency)
+			self.PWM_M2.start(0.0)
+			self.PWM_M3 = GPIO.PWM(self.M3,self.frequency)
+			self.PWM_M3.start(0.0)
+			self.PWM_M4 = GPIO.PWM(self.M4,self.frequency)
+			self.PWM_M4.start(0.0)
+
+		else:
+			try:
+				connection = nanpy.SerialManager()
+				self.a = nanpy.ArduinoApi(connection = connection)
+			except:
+				print("Failed to connect to Arduino")
+			self.a.pinMode(self.DB1, self.a.OUTPUT)
+			self.a.pinMode(self.M1, self.a.OUTPUT)
+			self.a.pinMode(self.M2, self.a.OUTPUT)
+			self.a.pinMode(self.DB2, self.a.OUTPUT)
+			self.a.pinMode(self.M3, self.a.OUTPUT)
+			self.a.pinMode(self.M4, self.a.OUTPUT)
 
 	def subscribe(self):
 		rospy.init_node('motors', anonymous=False)
@@ -84,18 +97,31 @@ class Motors():
 
 			print("motor outputs: ",x_M1,x_M2,x_M3,x_M4)
 
-			self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
-			self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
-			self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
-			self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
+			if self.arch == 'raspi':
+				self.PWM_M1.ChangeDutyCycle(50.0 + x_M1*50.0)
+				self.PWM_M2.ChangeDutyCycle(50.0 + x_M2*50.0)
+				self.PWM_M3.ChangeDutyCycle(50.0 + x_M3*50.0)
+				self.PWM_M4.ChangeDutyCycle(50.0 + x_M4*50.0)
 
-			GPIO.output(self.DB1,True)   # enable DB #1
-			GPIO.output(self.DB2,True)   # enable DB #2
+				GPIO.output(self.DB1,True)   # enable DB #1
+				GPIO.output(self.DB2,True)   # enable DB #2
+			else:
+				self.a.analogWrite(self.M1,255*(0.5 + x_M1*0.5))
+				self.a.analogWrite(self.M2,255*(0.5 + x_M2*0.5))
+				self.a.analogWrite(self.M3,255*(0.5 + x_M3*0.5))
+				self.a.analogWrite(self.M4,255*(0.5 + x_M4*0.5))
+
+				self.digitalWrite(self.DB1,self.a.HIGH) # enable DB #1
+				self.digitalWrite(self.DB2,self.a.HIGH) # enable DB #2
 
 		else:
 			# disable output if right and left toggle are 0.0
-			GPIO.output(self.DB1,False)
-			GPIO.output(self.DB2,False)
+			if self.arch == 'raspi':
+				GPIO.output(self.DB1,False)
+				GPIO.output(self.DB2,False)
+			else:
+				self.digitalWrite(self.DB1,self.a.LOW)
+				self.digitalWrite(self.DB2,self.a.LOW)
 
 
 	def rotation(self,LTOGRIGHT):
@@ -211,16 +237,16 @@ class Motors():
 		"""
 		disable both motor driver boards
 		"""
-		GPIO.output(self.DB1,False)   # disable DB #1
-		GPIO.output(self.DB2,False)   # disable DB #2
+		if self.arch == 'raspi':
+			GPIO.output(self.DB1,False)
+			GPIO.output(self.DB2,False)
+		else:
+			self.digitalWrite(self.DB1,self.a.LOW)
+			self.digitalWrite(self.DB2,self.a.LOW)
 
 if __name__ == '__main__':
 	try:
 		subscriber = Motors()
 		subscriber.subscribe()
 	except rospy.ROSInterruptException:
-		subscriber.PWM_M1.stop()
-		subscriber.PWM_M2.stop()
-		subscriber.PWM_M3.stop()
-		subscriber.PWM_M4.stop()
 		subscriber.disable()
